@@ -1,0 +1,109 @@
+<root>
+	<Dock>
+		<visible>	false	</visible>
+		<Panel>
+			<lastX>	883	</lastX>
+			<lastY>	171	</lastY>
+			<lastWidth>	252	</lastWidth>
+			<lastHeight>	579	</lastHeight>
+			<expanded>	true	</expanded>
+			<expandedSize>	100	</expandedSize>
+			<floating>	true	</floating>
+			<Tab>
+				<visible>	true	</visible>
+				<contentID>	UAL	</contentID>
+				<ContentData>
+					<lastLanguage>	zh_cn	</lastLanguage>
+					<shortCaption>	&#215;&#202;&#212;&#180;	</shortCaption>
+					<longCaption>	&#215;&#202;&#212;&#180;&#228;&#175;&#192;&#192;&#198;&#247;	</longCaption>
+					<initialTreeSize>	195	</initialTreeSize>
+					<layoutVertical>	true	</layoutVertical>
+					<filtersVisible>	false	</filtersVisible>
+					<vfolderOrder>	All;Favourites;History;Models;Shells;Trees;Prefabs;Entities;User Data Objects;Lights;Particles;Textures;Brushes;Misc	</vfolderOrder>
+					<lastVFolder>	Models	</lastVFolder>
+				</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	true	</visible>
+				<contentID>	GUITABS::ContentContainer	</contentID>
+				<ContentData>
+					<Subcontent>	PageObjects
+						<current>	true	</current>
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageTerrainTexture
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageTerrainHeight
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageTerrainFilter
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageTerrainMesh
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageTerrainImport
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+					<Subcontent>	PageProject
+						<SubcontentData>	</SubcontentData>
+					</Subcontent>
+				</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageProperties	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageOptionsGeneral	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageOptionsNavigation	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageOptionsWeather	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageOptionsEnvironment	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageOptionsHistogram	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageMessagesID	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+			<Tab>
+				<visible>	false	</visible>
+				<contentID>	PageChunkTexture	</contentID>
+				<ContentData>	</ContentData>
+			</Tab>
+		</Panel>
+		<Tree>
+			<MainView>	Main Application View Window	</MainView>
+		</Tree>
+		<Floater>
+			<posX>	540	</posX>
+			<posY>	47	</posY>
+			<width>	258	</width>
+			<height>	585	</height>
+			<lastRollupSize>	0	</lastRollupSize>
+			<DockedPanel>
+				<index>	0	</index>
+			</DockedPanel>
+		</Floater>
+	</Dock>
+</root>

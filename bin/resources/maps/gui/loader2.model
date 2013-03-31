@@ -1,0 +1,8 @@
+<loader2.model>
+	<animation>
+		<name>	loader2	</name>
+		<frameRate>	30.000000	</frameRate>
+		<nodes>	E:/A101/redbird/A101/resources/maps/gui/loader2	</nodes>
+	</animation>
+	<nodefullVisual>	E:/A101/redbird/A101/resources/maps/gui/loader2	</nodefullVisual>
+</loader2.model>

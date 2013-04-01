@@ -1,0 +1,50 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "worldeditor", "worldeditor2005.vcproj", "{581F3C87-1199-4B00-A6BD-1ADB56628E14}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Consumer_Release|Win32 = Consumer_Release|Win32
+		Debug|Win32 = Debug|Win32
+		Editor_Debug|Win32 = Editor_Debug|Win32
+		Editor_Eval|Win32 = Editor_Eval|Win32
+		Editor_Hybrid|Win32 = Editor_Hybrid|Win32
+		Eval_Release|Win32 = Eval_Release|Win32
+		Hybird_debug|Win32 = Hybird_debug|Win32
+		Hybrid_BoundChecker|Win32 = Hybrid_BoundChecker|Win32
+		Hybrid|Win32 = Hybrid|Win32
+		PyModule_Hybrid|Win32 = PyModule_Hybrid|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Consumer_Release|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Consumer_Release|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Debug|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Debug|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Debug|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Debug|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Eval|Win32.ActiveCfg = Editor_Eval|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Eval|Win32.Build.0 = Editor_Eval|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Hybrid|Win32.ActiveCfg = Editor_Hybrid|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Editor_Hybrid|Win32.Build.0 = Editor_Hybrid|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Eval_Release|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Eval_Release|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybird_debug|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybird_debug|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybrid_BoundChecker|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybrid_BoundChecker|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybrid|Win32.ActiveCfg = Editor_Hybrid|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Hybrid|Win32.Build.0 = Editor_Hybrid|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.PyModule_Hybrid|Win32.ActiveCfg = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.PyModule_Hybrid|Win32.Build.0 = Editor_Debug|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Release|Win32.ActiveCfg = Editor_Hybrid|Win32
+		{581F3C87-1199-4B00-A6BD-1ADB56628E14}.Release|Win32.Build.0 = Editor_Hybrid|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

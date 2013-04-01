@@ -1,0 +1,43 @@
+#pragma once
+
+#include "appmgr/scripted_module.hpp"
+
+#include <string>
+
+class CSliderCtrl;
+
+class PythonAdapter
+{
+public:
+	PythonAdapter();
+	~PythonAdapter();
+
+	bool hasScriptObject() const;
+
+	void reloadUIAdapter();
+
+	bool call( const std::string & fnName );
+	bool callString( const std::string & fnName, const std::string & param );
+	bool callString2( const std::string & fnName, const std::string & param1, 
+		const std::string & param2 );
+
+	bool ActionScriptExecute( const std::string & functionName );
+	bool ActionScriptUpdate( const std::string & actionName, int & enabled, 
+		int & checked );
+
+	void onSliderAdjust( const std::string & name, int pos, int min, int max );
+	void sliderUpdate( CSliderCtrl * slider, const std::string & sliderName );
+
+	void onListItemSelect( const std::string & name, int index );
+	void onListSelectUpdate( CListBox * listBox, 
+		const std::string & listBoxName );
+
+	void contextMenuGetItems( const std::string & type, const std::string path, 
+		std::map<int,std::string> & items );
+	void contextMenuHandleResult( const std::string & type, 
+		const std::string path, int result );
+
+protected:
+	PyObject* pScriptObject_;
+    bool proActive_;
+};

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "appmgr", "appmgr2005.vcproj", "{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Editor_Debug|Win32 = Editor_Debug|Win32
+		Editor_Hybrid|Win32 = Editor_Hybrid|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Debug|Win32.ActiveCfg = Editor_Debug|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Debug|Win32.Build.0 = Editor_Debug|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Hybrid|Win32.ActiveCfg = Editor_Hybrid|Win32
+		{EED0A6F9-5761-42B2-B508-DB3D1C3081A9}.Editor_Hybrid|Win32.Build.0 = Editor_Hybrid|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

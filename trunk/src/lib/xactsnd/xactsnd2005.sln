@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xactsnd", "xactsnd2005.vcproj", "{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Hybrid_BoundChecker|Win32 = Hybrid_BoundChecker|Win32
+		Hybrid|Win32 = Hybrid|Win32
+		PyModule_Hybrid|Win32 = PyModule_Hybrid|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Debug|Win32.Build.0 = Debug|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Hybrid_BoundChecker|Win32.ActiveCfg = Hybrid_BoundChecker|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Hybrid_BoundChecker|Win32.Build.0 = Hybrid_BoundChecker|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Hybrid|Win32.ActiveCfg = Hybrid|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Hybrid|Win32.Build.0 = Hybrid|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.PyModule_Hybrid|Win32.ActiveCfg = PyModule_Hybrid|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.PyModule_Hybrid|Win32.Build.0 = PyModule_Hybrid|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Release|Win32.ActiveCfg = Release|Win32
+		{D1C6E2C2-51D6-45BA-A7AB-E7B7127D9027}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "romp", "romp2005.vcproj", "{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Consumer_Release|Win32 = Consumer_Release|Win32
+		Debug|Win32 = Debug|Win32
+		Editor_Debug|Win32 = Editor_Debug|Win32
+		Editor_Hybrid|Win32 = Editor_Hybrid|Win32
+		Hybird_debug|Win32 = Hybird_debug|Win32
+		Hybrid|Win32 = Hybrid|Win32
+		PyModule_Hybrid|Win32 = PyModule_Hybrid|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Consumer_Release|Win32.ActiveCfg = Consumer_Release|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Consumer_Release|Win32.Build.0 = Consumer_Release|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Debug|Win32.Build.0 = Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Debug|Win32.ActiveCfg = Editor_Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Debug|Win32.Build.0 = Editor_Debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Hybrid|Win32.ActiveCfg = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Editor_Hybrid|Win32.Build.0 = Editor_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybird_debug|Win32.ActiveCfg = Hybird_debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybird_debug|Win32.Build.0 = Hybird_debug|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybrid|Win32.ActiveCfg = Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Hybrid|Win32.Build.0 = Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.PyModule_Hybrid|Win32.ActiveCfg = PyModule_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.PyModule_Hybrid|Win32.Build.0 = PyModule_Hybrid|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Release|Win32.ActiveCfg = Release|Win32
+		{879B9D6D-C3AB-41C7-8EEC-B7B36C4AE5E7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

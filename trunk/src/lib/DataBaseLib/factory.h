@@ -6,7 +6,7 @@
 #include "Other.h"
 #include <msxml.h>
 #include <atlbase.h>
-#import "msxml4.dll"
+//#import "msxml4.dll"
 
  class CDatabaseFactory
 {

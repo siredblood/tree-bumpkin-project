@@ -3778,6 +3778,26 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="BuildingScheme"
+			>
+			<File
+				RelativePath=".\BuildingScheme\buildingSchemeDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\buildingSchemeDatabase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\buildingSchemeManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\buildingSchemeManager.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\res\worldviewer.ico"
 			>

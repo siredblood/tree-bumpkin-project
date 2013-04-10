@@ -23,19 +23,19 @@ public:
 	参数：
 	返回：
 	====================================*/
-	void addScheme(CString strScheme, CString strBeReplacedModel, CString strNewModel );
+	BOOL addScheme(CString strScheme, CString strBeReplacedModel, CString strNewModel );
 	/*====================================
 	说明：删除某个方案
 	参数：
 	返回：
 	====================================*/
-	void deleteScheme(CString strScheme);
+	BOOL deleteScheme(CString strScheme);
 	/*====================================
 	说明：删除方案中某条记录
 	参数：
 	返回：
 	====================================*/
-	void deleteScheme(CString strScheme, CString strBeReplacedModel);
+	BOOL deleteScheme(CString strScheme, CString strBeReplacedModel);
 };
 
 #endif // buildingSchemeDatabase_h__

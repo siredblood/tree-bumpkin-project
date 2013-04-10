@@ -1,5 +1,6 @@
 #include "pch.hpp"
 #include "buildingSchemeManager.h"
+#include "buildingSchemeDatabase.h"
 
 BuildingSchemeManager* BuildingSchemeManager::mInstance = NULL;
 
@@ -24,12 +25,14 @@ BuildingSchemeManager* BuildingSchemeManager::getInstance()
 
 void BuildingSchemeManager::init()
 {
+	
 	loadScheme();
 }
 
 void BuildingSchemeManager::loadScheme()
 {
-
+	BuildingSchemeDatabase database;
+	database.loadScheme(mReplaceScheme);
 }
 
 void BuildingSchemeManager::saveScheme()
@@ -53,7 +56,12 @@ void BuildingSchemeManager::addScheme( CString strSchemeName, std::map<CString, 
 			iter->second.insert( std::pair<CString, CString>(childIter->first,childIter->second) );
 		}
 	}
-
+	BuildingSchemeDatabase database;
+	std::map<CString, CString>::iterator childIter;
+	for(childIter=vReplacelist.begin(); childIter!=vReplacelist.end(); childIter++)
+	{
+		database.addScheme(strSchemeName, childIter->first, childIter->second);
+	}
 }
 
 void BuildingSchemeManager::addScheme( CString strSchemeName, CString strOldModel, CString strNewModel )
@@ -70,6 +78,8 @@ void BuildingSchemeManager::addScheme( CString strSchemeName, CString strOldMode
 	{
 		iter->second.insert( std::pair<CString, CString>(strOldModel, strNewModel) );
 	}
+	BuildingSchemeDatabase database;
+	database.addScheme(strSchemeName, strOldModel, strNewModel);
 }
 
 void BuildingSchemeManager::deleteScheme( CString strSchemeName )
@@ -79,6 +89,8 @@ void BuildingSchemeManager::deleteScheme( CString strSchemeName )
 	if(iter!=mReplaceScheme.end())
 	{
 		mReplaceScheme.erase( iter );
+		BuildingSchemeDatabase database;
+		database.deleteScheme(strSchemeName);
 	}
 }
 
@@ -93,7 +105,11 @@ void BuildingSchemeManager::deleteScheme( CString strSchemeName, CString strOldM
 		{
 			iter->second.erase(childIter);
 		}
+		BuildingSchemeDatabase database;
+		database.deleteScheme(strSchemeName, strOldModel);
+
 	}
+
 }
 
 void BuildingSchemeManager::executeScheme( CString strSchemeName )

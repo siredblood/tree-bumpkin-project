@@ -41,6 +41,7 @@
 //模型操作
 #include "worldeditor/GeneralClass/HideAndShowObject.h"
 
+
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
 //自定义ID
@@ -186,7 +187,7 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//设置框架标题
 	SetWindowText("3D-WorldViewer");
 
-	PostMessage(UM_FULLSCREEN);
+	//PostMessage(UM_FULLSCREEN);
 
 	return 0;
 }

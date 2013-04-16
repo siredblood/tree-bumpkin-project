@@ -3782,6 +3782,14 @@
 			Name="BuildingScheme"
 			>
 			<File
+				RelativePath=".\BuildingScheme\AddBuildingSchemeDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\AddBuildingSchemeDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\BuildingScheme\buildingSchemeDatabase.cpp"
 				>
 			</File>
@@ -3797,7 +3805,27 @@
 				RelativePath=".\BuildingScheme\buildingSchemeManager.h"
 				>
 			</File>
+			<File
+				RelativePath=".\BuildingScheme\BuildingSchemeManagerDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\BuildingSchemeManagerDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\MessageRecord.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingScheme\MessageRecord.h"
+				>
+			</File>
 		</Filter>
+		<File
+			RelativePath=".\stdafx.h"
+			>
+		</File>
 		<File
 			RelativePath=".\res\worldviewer.ico"
 			>

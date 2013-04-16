@@ -63,6 +63,12 @@ public:
 	====================================*/
 	void deleteScheme(CString strSchemeName, CString strOldModel);
 	/*====================================
+	说明：删除指定模型的方案
+	参数：
+	返回：
+	====================================*/
+	void deleteSchemeByModel(CString strModel);
+	/*====================================
 	说明：获取所有方案
 	参数：
 	返回：
@@ -86,6 +92,18 @@ public:
 	返回：
 	====================================*/
 	void executeScheme(CString strSchemeName);
+	/*====================================
+	说明：定位到方案模型
+	参数：
+	返回：
+	====================================*/
+	void locateToModel(CString strModel);
+
+	//测试
+	void handleKeyEvent( const KeyEvent & event );
+
+private:
+	ChunkItemPtr findItem(CString strGuid);
 
 private:
 	static BuildingSchemeManager* mInstance;

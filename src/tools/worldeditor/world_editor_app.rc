@@ -133,6 +133,33 @@ BEGIN
     PUSHBUTTON      "摄像头信息",IDC_BTN_CAMERA,337,180,50,14
 END
 
+IDD_BUILDSCHEME_DIALOG DIALOGEX 0, 0, 483, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "模型替换方案"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,426,7,50,14
+    LTEXT           "原模型：",IDC_STATIC,98,10,33,8
+    EDITTEXT        IDC_EDIT_ORIGINAL,135,7,105,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "方案",IDC_STATIC,7,34,144,197
+    LTEXT           "替换模型：",IDC_STATIC,247,9,41,8
+    EDITTEXT        IDC_EDIT_REPLACE,292,7,123,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "替换模型",IDC_STATIC,160,34,316,197
+    LTEXT           "方案：",IDC_STATIC,7,10,25,8
+    EDITTEXT        IDC_EDIT_SCHEME,34,7,54,14,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_LIST_SCHEME,11,50,135,175,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_LIST_REPLACE,"SysListView32",WS_BORDER | WS_TABSTOP,167,49,301,175
+END
+
+IDD_SCHEMEMANAGER_DLG DIALOGEX 0, 0, 380, 192
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "建筑方案管理"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "自定义1",IDC_REPORTCTRL,"XTPReport",WS_TABSTOP,7,7,366,152
+    PUSHBUTTON      "删除",IDC_BUTTON1,315,166,58,19
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -175,6 +202,33 @@ BEGIN
         MENUITEM "关于...",                       ID_ABOUT
     END
 END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_BUILDSCHEME_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 476
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+
+    IDD_SCHEMEMANAGER_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 185
+    END
+END
+#endif    // APSTUDIO_INVOKED
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -873,6 +927,20 @@ IDI_CHUNK_TEXTURE_NOTRACK ICON                    "res\\chunk_texture_notrack.ic
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "?????"
+    BEGIN
+        MENUITEM "?????",                       ID_32800
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // DESIGNINFO
 //
 
@@ -997,20 +1065,6 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Menu
-//
-
-IDR_MAINFRAME MENU 
-BEGIN
-    POPUP "?????"
-    BEGIN
-        MENUITEM "?????",                       ID_32800
-    END
-END
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1927,6 +1981,28 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// Menu
+//
+
+IDR_PROPERTIES_LIST_POPUP MENU 
+BEGIN
+    POPUP "`RC_SCENE_POPUP_MENU"
+    BEGIN
+        MENUITEM "`RC_SCENE_POPUP_MENU_ADD_ITEM", ID_PROPERTIES_LIST_POPUP_ADDITEM
+    END
+END
+
+IDR_PROPERTIES_LISTITEM_POPUP MENU 
+BEGIN
+    POPUP "`RC_SCENE_POPUP_MENU"
+    BEGIN
+        MENUITEM "`RC_SCENE_POPUP_MENU_REMOVE_ITEM", ID_PROPERTIES_LISTITEM_POPUP_REMOVEITEM
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // DESIGNINFO
 //
 
@@ -1959,30 +2035,33 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Menu
+// Bitmap
 //
 
-IDR_PROPERTIES_LIST_POPUP MENU 
-BEGIN
-    POPUP "`RC_SCENE_POPUP_MENU"
-    BEGIN
-        MENUITEM "`RC_SCENE_POPUP_MENU_ADD_ITEM", ID_PROPERTIES_LIST_POPUP_ADDITEM
-    END
-END
-
-IDR_PROPERTIES_LISTITEM_POPUP MENU 
-BEGIN
-    POPUP "`RC_SCENE_POPUP_MENU"
-    BEGIN
-        MENUITEM "`RC_SCENE_POPUP_MENU_REMOVE_ITEM", ID_PROPERTIES_LISTITEM_POPUP_REMOVEITEM
-    END
-END
-
+IDR_SCENE_ICONS         BITMAP                  "res\\sceneicons.bmp"
+IDR_IMP_TER_TOOLBAR     BITMAP                  "res\\imptoolbar.bmp"
+IDR_IMP_TER_DIS_TOOLBAR BITMAP                  "res\\impdistoolbar.bmp"
+IDR_SKYDOME_TB          BITMAP                  "res\\skydometb.bmp"
+IDR_SKYDOME_DIS_TB      BITMAP                  "res\\skydomed.bmp"
+IDB_OPEN                BITMAP                  "res\\open.bmp"
+IDB_OPEND               BITMAP                  "res\\opend.bmp"
+IDB_NEWFILE             BITMAP                  "res\\newfile.bmp"
+IDB_NEWFILED            BITMAP                  "res\\newfiled.bmp"
+IDB_DUPLICATE           BITMAP                  "res\\duplicate.bmp"
+IDB_DUPLICATED          BITMAP                  "res\\duplicated.bmp"
+IDB_CANCEL              BITMAP                  "res\\cancel.bmp"
+IDR_IMP_MASK_TOOLBAR    BITMAP                  "res\\mask_tb.bmp"
+IDR_IMP_MASK_DIS_TOOLBAR BITMAP                  "res\\mask_tb_dis.bmp"
+IDB_EDITPROJ            BITMAP                  "res\\editproj.bmp"
+IDB_EDITPROJD           BITMAP                  "res\\editprojd.bmp"
+IDB_SAVEBRUSH           BITMAP                  "res\\savebrush.bmp"
+IDB_SAVEBRUSHD          BITMAP                  "res\\savebrushd.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
+
 IDR_IMP_TER_TOOLBAR TOOLBAR  16, 15
 BEGIN
     BUTTON      IDC_TERIMP_ANTICLOCKWISE_BTN
@@ -2042,30 +2121,6 @@ BEGIN
     BUTTON      ID_TER_PAINT_EDITMODE
 END
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Bitmap
-//
-
-IDR_SCENE_ICONS         BITMAP                  "res\\sceneicons.bmp"
-IDR_IMP_TER_TOOLBAR     BITMAP                  "res\\imptoolbar.bmp"
-IDR_IMP_TER_DIS_TOOLBAR BITMAP                  "res\\impdistoolbar.bmp"
-IDR_SKYDOME_TB          BITMAP                  "res\\skydometb.bmp"
-IDR_SKYDOME_DIS_TB      BITMAP                  "res\\skydomed.bmp"
-IDB_OPEN                BITMAP                  "res\\open.bmp"
-IDB_OPEND               BITMAP                  "res\\opend.bmp"
-IDB_NEWFILE             BITMAP                  "res\\newfile.bmp"
-IDB_NEWFILED            BITMAP                  "res\\newfiled.bmp"
-IDB_DUPLICATE           BITMAP                  "res\\duplicate.bmp"
-IDB_DUPLICATED          BITMAP                  "res\\duplicated.bmp"
-IDB_CANCEL              BITMAP                  "res\\cancel.bmp"
-IDR_IMP_MASK_TOOLBAR    BITMAP                  "res\\mask_tb.bmp"
-IDR_IMP_MASK_DIS_TOOLBAR BITMAP                  "res\\mask_tb_dis.bmp"
-IDB_EDITPROJ            BITMAP                  "res\\editproj.bmp"
-IDB_EDITPROJD           BITMAP                  "res\\editprojd.bmp"
-IDB_SAVEBRUSH           BITMAP                  "res\\savebrush.bmp"
-IDB_SAVEBRUSHD          BITMAP                  "res\\savebrushd.bmp"
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////

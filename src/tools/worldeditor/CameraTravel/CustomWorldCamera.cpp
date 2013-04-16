@@ -98,6 +98,7 @@ void CCustomWorldCamera::SetCameraViewCentre(Vector3 pos)
 
 void CCustomWorldCamera::handleKeyEvent( const KeyEvent & event )
 {
+	//INFO_MSG("handleKeyEvent");
 	switch (event.key())
 	{	
 		case KeyEvent::KEY_JOY0:

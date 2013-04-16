@@ -201,6 +201,9 @@
 #define IDR_BUTTON_AREA                 713
 #define IDB_BITMAP5                     753
 #define IDB_BITMAP6                     754
+#define IDD_BUILDSCHEME_DIALOG          759
+#define IDD_DIALOG7                     760
+#define IDD_SCHEMEMANAGER_DLG           760
 #define IDC_SELECTION_FILTER            900
 #define IDC_COORDINATION_FILTER         901
 #define IDC_PROPSHEET_OBJECT_PLACEHOLDER 1002
@@ -476,6 +479,7 @@
 #define IDC_SCENE_LIGHT_MULTIPLIER_STATIC 1283
 #define IDC_OPTIONS_REMEMBER_SELECTION_FILTER2 1284
 #define IDC_LIST1                       1285
+#define IDC_LIST_SCHEME                 1285
 #define IDC_HOTKEY1                     1286
 #define IDC_SPACE2                      1287
 #define IDC_TODFILE_EDIT                1288
@@ -735,9 +739,15 @@
 #define IDC_TREE1                       1680
 #define IDC_CHECK1                      1681
 #define IDC_CHECK3                      1682
+#define IDC_EDIT_ORIGINAL               1682
 #define IDC_CHECK4                      1683
+#define IDC_EDIT_REPLACE                1683
 #define IDC_CHECK5                      1684
+#define IDC_EDIT_SCHEME                 1684
 #define IDC_CHECK6                      1685
+#define IDC_LIST_REPLACE                1685
+#define IDC_CUSTOM1                     1687
+#define IDC_BUTTON1                     1688
 #define ID_GPS_POSITION                 1718
 #define ID_BUTTON_MOVESPEED1            32771
 #define ID_BUTTON_MOVESPEED2            32772
@@ -910,9 +920,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        759
+#define _APS_NEXT_RESOURCE_VALUE        761
 #define _APS_NEXT_COMMAND_VALUE         33582
-#define _APS_NEXT_CONTROL_VALUE         1682
+#define _APS_NEXT_CONTROL_VALUE         1689
 #define _APS_NEXT_SYMED_VALUE           252
 #endif
 #endif

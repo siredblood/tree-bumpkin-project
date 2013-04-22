@@ -39,6 +39,9 @@
 #include <afxdhtml.h>
 #include "cstdmf/restart.hpp"
 
+// 自定义
+#include "DataBaseLib/DBHelper.h"
+
 static AutoConfigString s_LanguageFile( "system/language" );
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
@@ -344,6 +347,23 @@ BOOL WorldEditorApp::InitInstance()
 	//保存exe所在的目录
 	g_strExeFullPath = szPath;
 	g_strExeFullPath = g_strExeFullPath.Mid( 0, g_strExeFullPath.ReverseFind( '\\' ) );
+
+	//读连接配置
+	std::string strXmlFile = g_strExeFullPath.GetBuffer(0);
+	strXmlFile += "\\Configs.xml";
+
+	DataSectionPtr pConnetConfig = BWResource::openSection( strXmlFile, false );
+	int iType = pConnetConfig->findChild("Type")->asInt();
+	std::string strServer = pConnetConfig->findChild("Server")->asString();
+	std::string strDatabase = pConnetConfig->findChild("Database")->asString();
+	std::string strUser = pConnetConfig->findChild("User")->asString();
+	std::string strPassword = pConnetConfig->findChild("Password")->asString();
+
+	if( !CDatabaseFactory::ConnetDatabase(g_strExeFullPath.GetBuffer(0), iType, 
+		strServer, strDatabase, strUser, strPassword))
+	{
+		MessageBox(NULL, "连接数据库失败！", "提示", MB_OK );
+	}
 	
 	if( !s_LanguageFile.value().empty() )
 		StringProvider::instance().load( BWResource::openSection( s_LanguageFile ) );

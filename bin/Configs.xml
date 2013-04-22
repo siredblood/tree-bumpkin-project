@@ -1,0 +1,13 @@
+<DBConnection>
+<!--
+Type value
+1-access
+2-sqlserver
+3-oracle
+-->
+	<Type>1</Type>
+	<Server></Server>
+	<Database>bumpkin.mdb</Database>
+	<User></User>
+	<Password></Password>
+</DBConnection>

@@ -198,7 +198,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/Zm1024"
-				AdditionalIncludeDirectories="../worldeditor"
+				AdditionalIncludeDirectories="&quot;D:\Program Files\Codejock Software\MFC\Xtreme ToolkitPro v15.0.1\Source&quot;;../worldeditor"
 				UsePrecompiledHeader="1"
 			/>
 			<Tool
@@ -3819,6 +3819,94 @@
 			</File>
 			<File
 				RelativePath=".\BuildingScheme\MessageRecord.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Mark"
+			>
+			<File
+				RelativePath=".\Mark\ChineseFont.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\ChineseFont.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkEyeable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkEyeable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkInput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkInput.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkLoad.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkLoad.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkManage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\DlgMarkManage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\MarkManage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\MarkManage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\MarkObject.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Mark\MarkObject.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="ApartmentDiagram"
+			>
+			<File
+				RelativePath=".\ApartmentDiagram\ApartmentDiagram.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ApartmentDiagram\ApartmentDiagram.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ApartmentDiagram\ApartmentDiagramMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ApartmentDiagram\ApartmentDiagramMgr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ApartmentDiagram\DlgApartmentDiagram.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ApartmentDiagram\DlgApartmentDiagram.h"
 				>
 			</File>
 		</Filter>

@@ -3918,6 +3918,30 @@
 			RelativePath=".\res\worldviewer.ico"
 			>
 		</File>
+		<File
+			RelativePath=".\res\&#21152;&#36733;&#26631;&#27880;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#26174;&#31034;&#26631;&#27880;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#26597;&#30475;&#25143;&#22411;&#22270;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#26631;&#27880;&#31649;&#29702;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#28155;&#21152;&#26631;&#27880;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#38544;&#34255;&#26631;&#27880;.png"
+			>
+		</File>
 	</Files>
 	<Globals>
 		<Global

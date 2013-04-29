@@ -199,6 +199,7 @@ BEGIN
     LTEXT           "快速刷选：",IDC_STI_LIANGTYPE3,58,222,41,8
 END
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
@@ -210,6 +211,18 @@ IDR_MAINFRAME           ICON                    "res\\worldviewer.ico"
 IDI_PAGE_TERRAIN_LINKUP ICON                    "res\\page_terrain_linkup.ico"
 IDI_PAGE_TERRAIN_LINKDOWN ICON                    "res\\page_terrain_linkdown.ico"
 IDI_CLOSE               ICON                    "res\\CloseIcon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
+
+IDR_BUTTON_LABELGET     PNG                     "res\\加载标注.png"
+IDR_BUTTON_LABELADD     PNG                     "res\\添加标注.png"
+IDR_BUTTON_LABELSET     PNG                     "res\\标注管理.png"
+IDR_BUTTON_LABELSHOW    PNG                     "res\\显示标注.png"
+IDR_BUTTON_LABELHIDE    PNG                     "res\\隐藏标注.png"
+IDR_BUTTON_DIAGRAMVIEW  PNG                     "res\\查看户型图.png"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -282,8 +295,13 @@ END
 
 STRINGTABLE 
 BEGIN
+    ID_GROUP_LABEL          "标注"
     ID_GROUP_SYS            "系统"
     ID_BUTTON_SUPEREDIT     "搜索输入"
+    ID_TAB_IMPORTTOOL       "常用工具"
+	ID_TAB_HELPTOOL			"帮助"
+	ID_GROUP_HELP			"帮助"
+	ID_GROUP_DIAGRAM		"户型图"
 END
 
 STRINGTABLE 
@@ -295,6 +313,19 @@ STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
     ID_VIEW_STATUS_BAR      "模型操作"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_LABELSET      "标注管理\n标注管理"
+	ID_BUTTON_LABELGET      "加载标注\n加载标注"
+    ID_BUTTON_LABELADD      "添加标注\n添加标注"
+    ID_BUTTON_LABELHIDE     "隐藏标注\n隐藏标注"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_DIAGRAMVIEW   "查看户型图\n查看户型图"
 END
 
 #endif    // 中文(中华人民共和国) resources

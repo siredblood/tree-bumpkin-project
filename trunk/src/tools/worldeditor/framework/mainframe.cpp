@@ -41,6 +41,15 @@
 //模型操作
 #include "worldeditor/GeneralClass/HideAndShowObject.h"
 
+// 标注
+#include "worldeditor/mark/DlgMarkInput.h"
+#include "worldeditor/mark/DlgMarkManage.h"
+#include "worldeditor/mark/MarkManage.h"
+#include "worldeditor/mark/DlgMarkLoad.h"
+#include "worldeditor/ApartmentDiagram/DlgApartmentDiagram.h"
+// 户型图
+#include "worldeditor/ApartmentDiagram/ApartmentDiagramMgr.h"
+
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -74,6 +83,14 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_WM_GETMINMAXINFO()
 
 	ON_MESSAGE(UM_FULLSCREEN, &MainFrame::OnFullScreen)
+
+	ON_COMMAND(ID_BUTTON_LABELADD, &MainFrame::OnAddmark)
+	ON_COMMAND(ID_BUTTON_LABELHIDE, &MainFrame::OnShoworhidemark)
+	ON_UPDATE_COMMAND_UI(ID_BUTTON_LABELHIDE, &MainFrame::OnUpdateShoworhidemark)
+	ON_COMMAND(ID_BUTTON_LABELSET, &MainFrame::OnMarkmanage)
+	ON_COMMAND(ID_BUTTON_LABELGET, &MainFrame::OnReloadmark)
+
+	ON_COMMAND(ID_BUTTON_DIAGRAMVIEW, &MainFrame::OnViewDiagram)
 
 	END_MESSAGE_MAP()
 
@@ -167,6 +184,8 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	pCommandBars->GetCommandBarsOptions()->bToolBarAccelTips = TRUE;
 
 	pCommandBars->GetShortcutManager()->SetAccelerators(IDR_MAINFRAME);
+
+	LoadIcons();
 	
 	//工具栏
 	if (!CreateRibbonBar())
@@ -550,22 +569,76 @@ void MainFrame::OnFrameTheme()
 //工具栏
 BOOL MainFrame::CreateRibbonBar()
 {
-	//CXTPCommandBars* pCommandBars = GetCommandBars();
+	CXTPCommandBars* pCommandBars = GetCommandBars();
 
-	//CMenu menu;
-	//menu.Attach( ::GetMenu(m_hWnd) );
-	//SetMenu(NULL);
+	CMenu menu;
+	menu.Attach( ::GetMenu(m_hWnd) );
+	SetMenu(NULL);
 
-	//CXTPRibbonBar* pRibbonBar = ( CXTPRibbonBar* )pCommandBars->Add( _T("The Ribbon"),
-	//	xtpBarTop, RUNTIME_CLASS(CXTPRibbonBar) );
-	//if ( !pRibbonBar )
-	//{
-	//	return FALSE;
-	//}
-	//pRibbonBar->EnableDocking(0);
+	CXTPRibbonBar* pRibbonBar = ( CXTPRibbonBar* )pCommandBars->Add( _T("The Ribbon"),
+		xtpBarTop, RUNTIME_CLASS(CXTPRibbonBar) );
+	if ( !pRibbonBar )
+	{
+		return FALSE;
+	}
+	pRibbonBar->EnableDocking(0);
 
+	//常用工具
+	CXTPRibbonTab* pTabImportTool = pRibbonBar->AddTab( ID_TAB_IMPORTTOOL );
+
+	CXTPRibbonGroup* pGroupLabel= pTabImportTool->AddGroup( ID_GROUP_LABEL );			//标注
+	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELGET );							//加载标注
+	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELADD	);							//添加标注
+	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELHIDE );							//显示/隐藏标注
+	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELSET );							//标注管理
+
+	CXTPRibbonGroup* pGroupDiagram = pTabImportTool->AddGroup( ID_GROUP_DIAGRAM );	//户型图
+	pGroupDiagram->SetControlsCentering();
+	pGroupDiagram->Add( xtpControlButton, ID_BUTTON_DIAGRAMVIEW );					//加载户型图
+
+	// 帮助
+	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
+
+	CXTPRibbonGroup* pGroupHelp= pTabHelpTool->AddGroup( ID_GROUP_HELP );			//帮助
+
+	pRibbonBar->ShowQuickAccess(FALSE);
+	pRibbonBar->EnableFrameTheme();
 	return TRUE;
 }
+
+//图标绑定工具栏
+void MainFrame::LoadIcons()
+{	
+	CXTPCommandBars* pCommandBars = GetCommandBars();
+
+	//加载标注
+	UINT uiGroupLabelGet[] = { ID_BUTTON_LABELGET };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELGET, uiGroupLabelGet, 
+		_countof(uiGroupLabelGet), CSize(32, 32) );
+
+	//标注管理
+	UINT uiGroupLabelSet[] = { ID_BUTTON_LABELSET };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELSET, uiGroupLabelSet, 
+		_countof(uiGroupLabelSet), CSize(32, 32) );
+
+	//添加标注
+	UINT uiGroupLabelAdd[] = { ID_BUTTON_LABELADD };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELADD, uiGroupLabelAdd, 
+		_countof(uiGroupLabelAdd), CSize(32, 32) );
+
+	//显示隐藏标注
+	UINT uiGroupLabelHide[] = { ID_BUTTON_LABELHIDE };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELHIDE, uiGroupLabelHide, 
+		_countof(uiGroupLabelHide), CSize(32, 32) );
+
+	// 查看户型图
+	UINT uiGroupDiagramView[] = { ID_BUTTON_DIAGRAMVIEW };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_DIAGRAMVIEW, uiGroupDiagramView, 
+		_countof(uiGroupDiagramView), CSize(32, 32) );
+
+
+}
+
 BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO: 在此添加专用代码和/或调用基类
@@ -636,4 +709,74 @@ LRESULT MainFrame::OnFullScreen(WPARAM wParam, LPARAM lParam)
 {
 	beginFullScreen();
 	return 0;
+}
+
+/**
+* 添加标注
+*/
+void MainFrame::OnAddmark()
+{
+	CDlgMarkInput::Instance().ShowWindow(SW_SHOW);
+}
+/**
+* 隐藏显示标注
+*/
+void MainFrame::OnShoworhidemark()
+{
+	bool bShowMark = CMarkObject::Instance().IsShowMark();
+	CMarkObject::Instance().ShowMark(!bShowMark);
+}
+/**
+* 隐藏显示标注更新
+*/
+void MainFrame::OnUpdateShoworhidemark(CCmdUI *pCmdUI)
+{
+	//pCmdUI->SetCheck(CMarkObject::Instance().IsShowMark());
+
+	CXTPCommandBars* pCommandBars = GetCommandBars();
+	bool bShowMark = CMarkObject::Instance().IsShowMark();
+
+	if ( !bShowMark )
+	{
+		//设置按钮为显示标注
+		pCmdUI->SetText( "显示标注" );
+		UINT uiGroupPauseNav[] = { ID_BUTTON_LABELHIDE };
+		pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELSHOW, uiGroupPauseNav,
+			_countof(uiGroupPauseNav), CSize(32, 32) );
+	}
+	else
+	{
+		//设置按钮为隐藏标注
+		pCmdUI->SetText( "隐藏标注" );
+		UINT uiGroupPauseNav[] = { ID_BUTTON_LABELHIDE };
+		pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELHIDE, uiGroupPauseNav,
+			_countof(uiGroupPauseNav), CSize(32, 32) );
+	}
+}
+/**
+* 标注管理
+*/
+void MainFrame::OnMarkmanage()
+{
+	CDlgMarkManage::Instance().ShowWindow( SW_SHOW );
+}
+/**
+* 加载标注
+*/
+void MainFrame::OnReloadmark()
+{
+	CDlgMarkLoad::Instance().ShowWindow( SW_SHOW );
+}
+/**
+* 查看户型图
+*/
+void MainFrame::OnViewDiagram()
+{
+	std::vector<ChunkItemPtr> vItems = WorldManager::instance().selectedItems();
+	if(vItems.size()!=1){
+		AfxMessageBox("请选择一个对象");
+		return;
+	}
+	CApartmentDiagramMgr::Instance().setCurrentApartment(vItems[0]->edGUID());
+	CDlgApartmentDiagram::Instance().ShowWindow(SW_SHOW);
 }

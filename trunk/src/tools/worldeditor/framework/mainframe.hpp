@@ -142,6 +142,13 @@ public:
 	//**************************户型图**************************//
 	afx_msg void OnViewDiagram();
 	//**************************户型图**************************//
+	//////////////////////////////////////////////////////////////////////////
+	//建筑替换方案
+	afx_msg void OnAddBuildingScheme();
+	afx_msg void OnBuildingSchemeManager();
+	afx_msg void OnDeleteBuildingScheme();
+	afx_msg void OnExecuteBuildingScheme();
+	//////////////////////////////////////////////////////////////////////////
 
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);

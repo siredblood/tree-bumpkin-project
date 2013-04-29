@@ -14,6 +14,7 @@ BuildingSchemeManager::BuildingSchemeManager()
 {
 
 	//TaskManager::instance().add( this, "BuildingSchemeManager", NULL );
+	init();
 }
 
 BuildingSchemeManager::~BuildingSchemeManager()
@@ -32,7 +33,7 @@ BuildingSchemeManager* BuildingSchemeManager::getInstance()
 
 void BuildingSchemeManager::init()
 {
-	
+	INFO_MSG("BuildingSchemeManager::init\n");
 	loadScheme();
 }
 
@@ -166,7 +167,7 @@ void BuildingSchemeManager::executeScheme( CString strSchemeName )
 				if(roll >= -0.001 && roll <= 0.001)
 					roll = 0.f;
 
-				INFO_MSG("%f,%f,%f\n", yaw, pitch, roll);
+				//INFO_MSG("%f,%f,%f\n", yaw, pitch, roll);
 
 				dir = Vector3(RAD_TO_DEG(pitch), RAD_TO_DEG(yaw), RAD_TO_DEG(roll) );
 				

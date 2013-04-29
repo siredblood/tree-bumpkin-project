@@ -14,6 +14,7 @@ BuildingSchemeDatabase::~BuildingSchemeDatabase()
 
 void BuildingSchemeDatabase::loadScheme( std::map<CString, std::map<CString, CString>> &vScheme )
 {
+	INFO_MSG("loadScheme\n");
 	if (!theBllApp.m_bConntSuccess)
 	{
 		MessageBox(NULL,_T("数据库连接失败！"),_T("提示"),0);
@@ -36,9 +37,11 @@ void BuildingSchemeDatabase::loadScheme( std::map<CString, std::map<CString, CSt
 			CString strBeReplace = (LPCSTR)(_bstr_t)pRecordSet->GetCollect("原模型");
 			CString strNewModel = (LPCSTR)(_bstr_t)pRecordSet->GetCollect("替换模型");
 
+			INFO_MSG("%s,%s,%s\n", strName,strBeReplace,strNewModel);
 			std::map<CString, std::map<CString, CString>>::iterator itr = vScheme.find(strName);
 			if(itr==vScheme.end())
 			{
+				INFO_MSG("不存在\n");
 				std::map<CString, CString> list;
 				list.insert( std::pair<CString, CString>(strBeReplace, strNewModel) );
 				vScheme.insert( std::pair<CString, std::map<CString, CString>>(strName, list) );
@@ -69,6 +72,8 @@ BOOL BuildingSchemeDatabase::addScheme( CString strScheme, CString strBeReplaced
 	_bstr_t strSQL;
 	strSQL = "INSERT INTO 建筑替换方案(方案名称,原模型,替换模型) values('" + strScheme +"','" + strBeReplacedModel
 		+"','" + strNewModel + "')";
+	
+	INFO_MSG(strSQL);
 	return theBllApp.m_pDB->ExcuteSql(strSQL,adCmdText);
 }
 

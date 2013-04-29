@@ -85,6 +85,9 @@ public:
 	//设置图标
 	BOOL CreateRibbonBar();
 
+	//工具栏图标设置
+	void LoadIcons();
+
 private:
 
 	/**
@@ -128,6 +131,18 @@ public:
 	afx_msg void OnToolbarHotItemChange( UINT id, NMHDR * pNotifyStruct, LRESULT * result );
 	afx_msg void OnSysColorChange();
 	
+	//**************************标注**************************//
+	afx_msg void OnAddmark();
+	afx_msg void OnShoworhidemark();
+	afx_msg void OnUpdateShoworhidemark(CCmdUI *pCmdUI);
+	afx_msg void OnMarkmanage();
+	afx_msg void OnReloadmark();
+	//**************************标注**************************//
+
+	//**************************户型图**************************//
+	afx_msg void OnViewDiagram();
+	//**************************户型图**************************//
+
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);
 

@@ -7,10 +7,6 @@
 #include "GeneralClass/Common.h"
 #include "romp/geometrics.hpp"
 
-#include "BuildingScheme/AddBuildingSchemeDlg.h"
-#include "BuildingScheme/buildingSchemeManager.h"
-#include "BuildingScheme/BuildingSchemeManagerDlg.h"
-
 #define  SECTION  100
 
 CCustomCamera CCustomCamera::instance;
@@ -101,58 +97,6 @@ void CCustomCamera::draw()
 
 void CCustomCamera::handleKeyEvent( const KeyEvent & event )
 {
-	switch (event.key())
-	{
-	case KeyEvent::KEY_1:	//给对象添加方案
-		{
-			if( event.isKeyDown() )
-			{
-				std::vector<ChunkItemPtr> vSelItems = WorldManager::instance().selectedItems();
-				if(vSelItems.size()==1)
-				{
-					std::string strGuid = vSelItems[0]->edGUID();
-					AddBuildingSchemeDlg::getInstance()->ShowWindow(SW_SHOW);
-					AddBuildingSchemeDlg::getInstance()->setSelectedModel(strGuid);
-				}
-			}
-			
-		}
-		break;
-	case KeyEvent::KEY_2:	//执行方案
-		{
-			if( event.isKeyDown() )
-			{
-				std::vector<CString> vAllSchemeName = BuildingSchemeManager::getInstance()->getAllSchemeName();
-				if(vAllSchemeName.size()>0)
-					BuildingSchemeManager::getInstance()->executeScheme(vAllSchemeName[0] );
-			}
-			
-		}
-		break;
-	case KeyEvent::KEY_3:	//删除对象的方案
-		{
-			if( event.isKeyDown() )
-			{
-				std::vector<ChunkItemPtr> vSelItems = WorldManager::instance().selectedItems();
-				int isize = vSelItems.size();
-				for(int i=0; i<isize; i++)
-				{
-					std::string strGuid = vSelItems[i]->edGUID();
-					BuildingSchemeManager::getInstance()->deleteSchemeByModel( strGuid.c_str() );
-				}
-			}
-		}
-		break;
-	case KeyEvent::KEY_4:
-		{
-			if( event.isKeyDown() )
-			{
-				BuildingSchemeManagerDlg::getInstance()->ShowWindow(SW_SHOW);
-				BuildingSchemeManagerDlg::getInstance()->showResult();
-			}
-		}
-		break;
-	}
 
 	if(m_ulState!=eAROUND)
 		return;

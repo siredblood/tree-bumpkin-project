@@ -49,7 +49,10 @@
 #include "worldeditor/ApartmentDiagram/DlgApartmentDiagram.h"
 // 户型图
 #include "worldeditor/ApartmentDiagram/ApartmentDiagramMgr.h"
-
+//建筑替换方案
+#include "BuildingScheme/AddBuildingSchemeDlg.h"
+#include "BuildingScheme/buildingSchemeManager.h"
+#include "BuildingScheme/BuildingSchemeManagerDlg.h"
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -91,6 +94,11 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_COMMAND(ID_BUTTON_LABELGET, &MainFrame::OnReloadmark)
 
 	ON_COMMAND(ID_BUTTON_DIAGRAMVIEW, &MainFrame::OnViewDiagram)
+
+	ON_COMMAND(ID_BUTTON_ADDBUILDINGSCHEME, &MainFrame::OnAddBuildingScheme)
+	ON_COMMAND(ID_BUTTON_DELETEBUILDINGSCHEME, &MainFrame::OnDeleteBuildingScheme)
+	ON_COMMAND(ID_BUTTON_BUILDINGSCHEMEMANAGER, &MainFrame::OnBuildingSchemeManager)
+	ON_COMMAND(ID_BUTTON_EXECUTEBUILDINGSCHEME, &MainFrame::OnExecuteBuildingScheme)
 
 	END_MESSAGE_MAP()
 
@@ -596,6 +604,14 @@ BOOL MainFrame::CreateRibbonBar()
 	pGroupDiagram->SetControlsCentering();
 	pGroupDiagram->Add( xtpControlButton, ID_BUTTON_DIAGRAMVIEW );					//加载户型图
 
+	//////////////////////////////////////////////////////////////////////////
+	//建筑替换方案
+	CXTPRibbonGroup* pGroupBuildingScheme= pTabImportTool->AddGroup( ID_GROUP_BUILDINGSCHEME);
+	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_ADDBUILDINGSCHEME);
+	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_DELETEBUILDINGSCHEME);	
+	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_BUILDINGSCHEMEMANAGER);	
+	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_EXECUTEBUILDINGSCHEME);	
+	//////////////////////////////////////////////////////////////////////////
 	// 帮助
 	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
 
@@ -779,4 +795,50 @@ void MainFrame::OnViewDiagram()
 	}
 	CApartmentDiagramMgr::Instance().setCurrentApartment(vItems[0]->edGUID());
 	CDlgApartmentDiagram::Instance().ShowWindow(SW_SHOW);
+}
+/*
+添加替换方案
+*/
+void MainFrame::OnAddBuildingScheme()
+{
+	std::vector<ChunkItemPtr> vSelItems = WorldManager::instance().selectedItems();
+	if(vSelItems.size()==1)
+	{
+		std::string strGuid = vSelItems[0]->edGUID();
+		AddBuildingSchemeDlg::getInstance()->ShowWindow(SW_SHOW);
+		AddBuildingSchemeDlg::getInstance()->setSelectedModel(strGuid);
+	}
+}
+/*
+方案管理
+*/
+void MainFrame::OnBuildingSchemeManager()
+{
+	BuildingSchemeManagerDlg::getInstance()->ShowWindow(SW_SHOW);
+	BuildingSchemeManagerDlg::getInstance()->showResult();
+}
+/*
+删除建筑方案
+*/
+void MainFrame::OnDeleteBuildingScheme()
+{
+	if (MessageBox("您确定要删除吗？","删除警告",MB_OKCANCEL)!=IDOK)
+		return;
+	std::vector<ChunkItemPtr> vSelItems = WorldManager::instance().selectedItems();
+	int isize = vSelItems.size();
+	for(int i=0; i<isize; i++)
+	{
+		std::string strGuid = vSelItems[i]->edGUID();
+		BuildingSchemeManager::getInstance()->deleteSchemeByModel( strGuid.c_str() );
+	}
+}
+/*
+执行替换方案
+*/
+void MainFrame::OnExecuteBuildingScheme()
+{
+	std::vector<CString> vAllSchemeName = BuildingSchemeManager::getInstance()->getAllSchemeName();
+	int isize = vAllSchemeName.size();
+	for(int i=0; i<isize; i++)
+		BuildingSchemeManager::getInstance()->executeScheme(vAllSchemeName[i] );
 }

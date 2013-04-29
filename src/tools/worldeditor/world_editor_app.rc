@@ -295,13 +295,31 @@ END
 
 STRINGTABLE 
 BEGIN
+    ID_BUTTON_LABELSET      "标注管理\n标注管理"
+    ID_BUTTON_LABELGET      "加载标注\n加载标注"
+    ID_BUTTON_LABELADD      "添加标注\n添加标注"
+    ID_BUTTON_LABELHIDE     "隐藏标注\n隐藏标注"
+    ID_TAB_IMPORTTOOL       "常用工具"
     ID_GROUP_LABEL          "标注"
+    ID_GROUP_DIAGRAM        "户型图"
+    ID_BUTTON_DIAGRAMVIEW   "查看户型图\n查看户型图"
+END
+
+STRINGTABLE 
+BEGIN
     ID_GROUP_SYS            "系统"
     ID_BUTTON_SUPEREDIT     "搜索输入"
-    ID_TAB_IMPORTTOOL       "常用工具"
-	ID_TAB_HELPTOOL			"帮助"
-	ID_GROUP_HELP			"帮助"
-	ID_GROUP_DIAGRAM		"户型图"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_TAB_HELPTOOL         "帮助"
+    ID_GROUP_HELP           "帮助"
+    ID_GROUP_BUILDINGSCHEME "建筑替换方案"
+    ID_BUTTON_ADDBUILDINGSCHEME "添加替换方案\n添加替换方案"
+    ID_BUTTON_DELETEBUILDINGSCHEME "删除替换方案\n删除替换方案"
+    ID_BUTTON_BUILDINGSCHEMEMANAGER "替换方案管理\n替换方案管理"
+    ID_BUTTON_EXECUTEBUILDINGSCHEME "方案执行\n方案执行"
 END
 
 STRINGTABLE 
@@ -313,19 +331,6 @@ STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
     ID_VIEW_STATUS_BAR      "模型操作"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_BUTTON_LABELSET      "标注管理\n标注管理"
-	ID_BUTTON_LABELGET      "加载标注\n加载标注"
-    ID_BUTTON_LABELADD      "添加标注\n添加标注"
-    ID_BUTTON_LABELHIDE     "隐藏标注\n隐藏标注"
-END
-
-STRINGTABLE 
-BEGIN
-    ID_BUTTON_DIAGRAMVIEW   "查看户型图\n查看户型图"
 END
 
 #endif    // 中文(中华人民共和国) resources

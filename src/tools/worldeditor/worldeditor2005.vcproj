@@ -3681,6 +3681,22 @@
 				RelativePath=".\Dialogs\BaseInputDlg.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Dialogs\BaseOperationDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Dialogs\BaseOperationDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Dialogs\BaseReportDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Dialogs\BaseReportDlg.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="GeneralClass"
@@ -3910,12 +3926,76 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="UDOController"
+			>
+			<File
+				RelativePath=".\UDOController\Fly.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\Fly.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\UDOController.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\UDOController.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\UDOHeader.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\UDOManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UDOController\UDOManager.h"
+				>
+			</File>
+			<Filter
+				Name="Dialog"
+				>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUDOManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUDOManager.h"
+					>
+				</File>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUDONode.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUDONode.h"
+					>
+				</File>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUdoNodeOperator.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\UDOController\Dialog\DlgUdoNodeOperator.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 		<File
 			RelativePath=".\stdafx.h"
 			>
 		</File>
 		<File
 			RelativePath=".\res\worldviewer.ico"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#20572;&#27490;&#27983;&#35272;.png"
 			>
 		</File>
 		<File
@@ -3936,6 +4016,18 @@
 		</File>
 		<File
 			RelativePath=".\res\&#28155;&#21152;&#26631;&#27880;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#32487;&#32493;&#26242;&#20572;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#32487;&#32493;&#27983;&#35272;.png"
+			>
+		</File>
+		<File
+			RelativePath=".\res\&#36335;&#24452;&#31649;&#29702;.png"
 			>
 		</File>
 		<File

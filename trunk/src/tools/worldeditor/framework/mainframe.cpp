@@ -53,6 +53,9 @@
 #include "BuildingScheme/AddBuildingSchemeDlg.h"
 #include "BuildingScheme/buildingSchemeManager.h"
 #include "BuildingScheme/BuildingSchemeManagerDlg.h"
+//ÐÂÂ·¾¶ä¯ÀÀ
+#include "worldeditor/UDOController/Dialog/DlgUDOManager.h"
+#include "worldeditor/UDOController/Fly.hpp"
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -94,12 +97,19 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_COMMAND(ID_BUTTON_LABELGET, &MainFrame::OnReloadmark)
 
 	ON_COMMAND(ID_BUTTON_DIAGRAMVIEW, &MainFrame::OnViewDiagram)
-
+	//·½°¸Ìæ»»
 	ON_COMMAND(ID_BUTTON_ADDBUILDINGSCHEME, &MainFrame::OnAddBuildingScheme)
 	ON_COMMAND(ID_BUTTON_DELETEBUILDINGSCHEME, &MainFrame::OnDeleteBuildingScheme)
 	ON_COMMAND(ID_BUTTON_BUILDINGSCHEMEMANAGER, &MainFrame::OnBuildingSchemeManager)
 	ON_COMMAND(ID_BUTTON_EXECUTEBUILDINGSCHEME, &MainFrame::OnExecuteBuildingScheme)
+	//Â·¾¶ä¯ÀÀ
+	ON_COMMAND(ID_BUTTON_PATHSET, &MainFrame::OnCtPathtravel)
+	ON_COMMAND(ID_BUTTON_PAUSENAV, &MainFrame::OnPausedPathTravel)
+	ON_UPDATE_COMMAND_UI(ID_BUTTON_PAUSENAV, &MainFrame::OnUpdatePausedPathTravel)
+	ON_COMMAND(ID_BUTTON_STOP, &MainFrame::OnStopPathTravel)
+	ON_UPDATE_COMMAND_UI(ID_BUTTON_STOP, &MainFrame::OnUpdateStopPathTravel)
 
+	
 	END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -612,6 +622,15 @@ BOOL MainFrame::CreateRibbonBar()
 	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_BUILDINGSCHEMEMANAGER);	
 	pGroupBuildingScheme->Add( xtpControlButton, ID_BUTTON_EXECUTEBUILDINGSCHEME);	
 	//////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	//Â·¾¶ä¯ÀÀ
+	CXTPRibbonGroup* pGroupPathScan = pTabImportTool->AddGroup( ID_GROUP_PATHSCAN );	//Ôö¼ÓÂ·¾¶ä¯ÀÀ×é
+	pGroupPathScan->SetControlsCentering();
+
+	pGroupPathScan->Add( xtpControlButton, ID_BUTTON_PATHSET );							//Â·¾¶¹ÜÀí
+	pGroupPathScan->Add( xtpControlButton, ID_BUTTON_PAUSENAV );						//ä¯ÀÀÔÝÍ£»ò¼ÌÐø
+	pGroupPathScan->Add( xtpControlButton, ID_BUTTON_STOP );							//ä¯ÀÀÍ£Ö¹
+	//////////////////////////////////////////////////////////////////////////
 	// °ïÖú
 	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
 
@@ -651,6 +670,18 @@ void MainFrame::LoadIcons()
 	UINT uiGroupDiagramView[] = { ID_BUTTON_DIAGRAMVIEW };
 	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_DIAGRAMVIEW, uiGroupDiagramView, 
 		_countof(uiGroupDiagramView), CSize(32, 32) );
+
+	UINT uiGroupPathset[] = { ID_BUTTON_PATHSET };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_PATH, uiGroupPathset, 
+		_countof(uiGroupPathset), CSize(32, 32) );
+
+	UINT uiGroupPathPause[] = { ID_BUTTON_PAUSENAV };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_PAUSE, uiGroupPathPause, 
+		_countof(uiGroupPathPause), CSize(32, 32) );
+
+	UINT uiGroupPathStop[] = { ID_BUTTON_STOP };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_STOP, uiGroupPathStop, 
+		_countof(uiGroupPathStop), CSize(32, 32) );
 
 
 }
@@ -841,4 +872,69 @@ void MainFrame::OnExecuteBuildingScheme()
 	int isize = vAllSchemeName.size();
 	for(int i=0; i<isize; i++)
 		BuildingSchemeManager::getInstance()->executeScheme(vAllSchemeName[i] );
+}
+
+void MainFrame::OnCtPathtravel()
+{
+	CDlgUDOManager::Instance().ShowWindow( SW_SHOW );
+}
+
+void MainFrame::OnPausedPathTravel()
+{
+	bool bTraveling = Fly::instance().isFlying();
+	if ( !bTraveling )
+		return;
+
+	bool bPause = Fly::instance().isPause();
+	Fly::instance().setPause( !bPause );
+}
+
+void MainFrame::OnUpdatePausedPathTravel( CCmdUI *pCmdUI )
+{
+	bool bTraveling = Fly::instance().isFlying();
+
+	//Í¼±ê¹ÜÀí
+	CXTPCommandBars* pCommandBars = GetCommandBars();
+
+	if ( bTraveling )
+	{
+		pCmdUI->Enable( TRUE );
+
+		bool bPause = Fly::instance().isPause();
+
+		if ( bPause )
+		{
+			pCmdUI->SetText( "¼ÌÐøä¯ÀÀ" );
+			//¼ÌÐøä¯ÀÀ
+			UINT uiGroupPauseNav[] = { ID_BUTTON_PAUSENAV };
+			pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_CONTINUE, uiGroupPauseNav,
+				_countof(uiGroupPauseNav), CSize(32, 32) );
+		}
+		else
+		{
+			//ÔÝÍ£ä¯ÀÀ
+			UINT uiGroupPauseNav[] = { ID_BUTTON_PAUSENAV };
+			pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_PAUSE, uiGroupPauseNav,
+				_countof(uiGroupPauseNav), CSize(32, 32) );
+			pCmdUI->SetText( "ÔÝÍ£ä¯ÀÀ" );
+		}
+	}
+	else
+	{
+		pCmdUI->Enable( FALSE );
+	}
+}
+
+void MainFrame::OnStopPathTravel()
+{
+	bool bTraveling = Fly::instance().isFlying();
+	if ( !bTraveling )
+		return;
+	Fly::instance().setFly( false );
+}
+
+void MainFrame::OnUpdateStopPathTravel( CCmdUI *pCmdUI )
+{
+	bool bTraveling = Fly::instance().isFlying();
+	pCmdUI->Enable( bTraveling );
 }

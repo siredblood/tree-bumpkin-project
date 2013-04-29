@@ -149,6 +149,13 @@ public:
 	afx_msg void OnDeleteBuildingScheme();
 	afx_msg void OnExecuteBuildingScheme();
 	//////////////////////////////////////////////////////////////////////////
+	//**************************路径浏览**************************//
+	afx_msg void OnCtPathtravel();
+	afx_msg void OnPausedPathTravel();
+	afx_msg void OnUpdatePausedPathTravel(CCmdUI *pCmdUI);
+	afx_msg void OnStopPathTravel();
+	afx_msg void OnUpdateStopPathTravel(CCmdUI *pCmdUI);
+	//**************************路径浏览**************************//
 
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);

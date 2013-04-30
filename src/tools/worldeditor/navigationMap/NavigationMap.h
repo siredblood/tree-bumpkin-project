@@ -26,6 +26,8 @@ public:
 	static CNavigationMap &Instance();
 	
 	void draw();
+
+	void handleKeyEvent( const KeyEvent & event );
 	
 	void SetDraw(bool bDrawDir);	//设置是否绘制
 	bool IsDraw();					//获取是否绘制
@@ -49,4 +51,8 @@ private:
 	float m_fNavWidth;	//导航图宽度
 	float m_fMapWidth;	//地图长度x
 	float m_fMapDepth;	//地图深度z
+	
+	Vector2 m_LeftTop;
+	Vector2 m_RightDown;
+	Vector2 m_center;
 };

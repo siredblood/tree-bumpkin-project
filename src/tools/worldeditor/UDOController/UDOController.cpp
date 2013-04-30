@@ -386,7 +386,8 @@ void UDOController::handleMouseEvent( const MouseEvent & event )
 	transform[ 3 ] = vMousePt;
 
 	ChunkItemPtr pItem = ChunkItemPlacer::createUDOChunkItem( transform );
-
+	if(pItem==NULL)
+		INFO_MSG("新建对象为空\n");
 	m_strGuid = pItem->edGUID();
 
 	setHandle( false );

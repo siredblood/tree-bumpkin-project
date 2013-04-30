@@ -2,6 +2,8 @@
 #include "NavigationMap.h"
 #include "romp/geometrics.hpp"
 #include "GeneralClass/CustomCollision.h"
+#include "CameraTravel/CustomWorldCamera.h"
+
 CNavigationMap CNavigationMap::instance;
 
 CNavigationMap::CNavigationMap(void)
@@ -48,8 +50,8 @@ void CNavigationMap::draw()
 	float xratio = camerapos.x / m_fMapWidth;
 	float zratio = camerapos.z / m_fMapDepth;
 	
-	INFO_MSG("camera: %f,%f\n", camerapos.x, camerapos.z);
-	INFO_MSG("%f,%f\n", xratio, zratio);
+	//INFO_MSG("camera: %f,%f\n", camerapos.x, camerapos.z);
+	//INFO_MSG("%f,%f\n", xratio, zratio);
 
 	Vector2 centerpt, xzpos,xfpos,zzpos,zfpos, ypos;// = Vector2( 40, 40 );
 	Vector2 NothPt, SouthPt, EastPt, WestPt;
@@ -72,6 +74,7 @@ void CNavigationMap::draw()
 			centerpt = Vector2(fWinWidth/2, fWinHeight/2);
 			break;
 	};
+	m_center = centerpt;
 
 	Vector2 LeftTop, RightBottom;
 	LeftTop = centerpt - Vector2(m_fNavWidth,m_fNavWidth);
@@ -88,6 +91,9 @@ void CNavigationMap::draw()
 	}
 	if(handDrawnMap_!=NULL)
 		Geometrics::drawTexRect( LeftTop, RightBottom, handDrawnMap_, true);
+
+	m_LeftTop = LeftTop;
+	m_RightDown = RightBottom;
 
 	Vector3 cameradir = Moo::rc().invView().applyToUnitAxisVector(2);
 	Vector3 rightdir, leftdir;
@@ -134,4 +140,43 @@ void CNavigationMap::SetDrowPosition(POSITION position)
 CNavigationMap::POSITION CNavigationMap::GetDrawPosition()
 {
 	return m_Position;
+}
+
+void CNavigationMap::handleKeyEvent( const KeyEvent & event )
+{
+	//if( !InputDevices::isKeyDown( KeyEvent::KEY_LEFTMOUSE ) )
+	//	return;
+
+	POINT pt = WorldManager::instance().currentCursorPosition();
+	INFO_MSG("ЪѓБъзјБъЃК%d,%d\n", pt.x,pt.y );
+	if( pt.x<m_LeftTop.x || pt.x>m_RightDown.x || pt.y<m_LeftTop.y || pt.y>m_RightDown.y)
+		return;
+	
+	float xratio = (pt.x - m_center.x) / m_fNavWidth;
+	float zratio = (pt.y - m_center.y) / m_fNavWidth;
+
+	BoundingBox spaceBB(ChunkManager::instance().cameraSpace()->gridBounds());
+	const Vector3& minB = spaceBB.minBounds();
+	const Vector3& maxB = spaceBB.maxBounds();
+	//INFO_MSG("%f,%f,%f\n", spaceBB.width(), spaceBB.height(), spaceBB.depth());
+	float fWidth = spaceBB.width();
+	float fDepth = spaceBB.depth();
+	
+	Vector3 camerapos = Moo::rc().invView().applyToOrigin();
+
+	camerapos.x = fWidth*xratio/2.0f;
+	camerapos.z = -fDepth*zratio/2.0f;
+
+	Vector3 cameradir = Moo::rc().invView().applyToUnitAxisVector(2);
+	CCustomWorldCamera::Instance().TeleportCamera( camerapos, cameradir);
+
+	//Vector3 worldRay = WorldManager::instance().getWorldRay(pt);
+
+	//Vector3 start =  Moo::rc().invView().applyToOrigin();
+	//Vector3 extent = start + worldRay * Moo::rc().camera().farPlane();
+
+	//CustomCollision sc;
+	//float fRet = ChunkManager::instance().cameraSpace()->collide( start, extent, sc );
+
+	//Vector3 vMousePt = start + worldRay * sc.getCollideDist() ;
 }

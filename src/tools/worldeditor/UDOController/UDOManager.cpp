@@ -130,7 +130,7 @@ BOOL CUDOManager::Load( std::vector<UDOCamera> &vUdoCamera )
 			udoCamera.fSpeed = (float)atof( str.c_str() );
 			var = pRecordSet->GetCollect("nodeid");
 			udoCamera.iNodeid = ( var.vt==VT_NULL ? -1 : var.intVal );
-
+			//INFO_MSG("iNodeid:%d\n", udoCamera.iNodeid);
 			vUdoCamera.push_back( udoCamera );
 			pRecordSet->MoveNext();
 		}

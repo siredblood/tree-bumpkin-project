@@ -379,6 +379,8 @@ void UDOController::handleMouseEvent( const MouseEvent & event )
 
 	Vector3 vMousePt = start + worldRay * sc.getCollideDist() ;
 
+	INFO_MSG("%f,%f,%f\n", vMousePt.x, vMousePt.y, vMousePt.z);
+
 	Matrix transform;
 	transform.setIdentity();
 	transform[ 3 ] = vMousePt;

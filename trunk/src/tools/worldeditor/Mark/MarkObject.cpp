@@ -46,7 +46,8 @@ void CMarkObject::fini()
 		if(m_vAllMarkIcon[i]!=NULL)
 		{
 			CancelSeleteItem( m_vAllMarkIcon[i] );
-			m_vAllMarkIcon[i]->chunk()->delStaticItem( m_vAllMarkIcon[i] );
+			// ÆÁ±ÎÁË£¬ÒòÎªchunk NULL;
+			//m_vAllMarkIcon[i]->chunk()->delStaticItem( m_vAllMarkIcon[i] );
 		}
 	}
 	m_vAllMarkIcon.clear();

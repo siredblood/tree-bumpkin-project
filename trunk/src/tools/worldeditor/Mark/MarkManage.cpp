@@ -48,7 +48,7 @@ void CMarkManage::AddMarkMessage(MARKDATA markdata)
 	if( markdata.strType=="0" )
 	{
 
-		ChunkItemPtr pMarkitem = ChunkItemPlacer::createDBChunkItem( "sets/items/information.model", markdata.strGUID, 
+		ChunkItemPtr pMarkitem = ChunkItemPlacer::createDBChunkItem( MARK_MODEL, markdata.strGUID, 
 			markdata.pos.x,markdata.pos.y-1,markdata.pos.z,0.0,0.0,0.0,1.0,1.0,1.0 );
 		if(pMarkitem==NULL)
 		{

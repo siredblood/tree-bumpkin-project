@@ -235,6 +235,8 @@ void CDlgUDOManager::OnDeletePath()
 
 void CDlgUDOManager::OnEditPathNode()
 {
+	INFO_MSG("编辑节点\n");
+
 	std::vector<UDOCamera> vItem;
 	GetSelectedItems( vItem );
 	if( vItem.size() != 1 )
@@ -249,6 +251,7 @@ void CDlgUDOManager::OnEditPathNode()
 	UDOCamera udoCamera;
 	CUDOManager::Instance().GetUdoCamera( vItem.begin()->id, udoCamera );
 
+	INFO_MSG("iNodeid:%d\n", udoCamera.iNodeid);
 	if( udoCamera.iNodeid < 0 )// 没有子节点
 	{
 		::MessageBox( NULL, "当前节点为空，请在三维场景点击鼠标左键放置第一个节点", "提示", MB_OK );

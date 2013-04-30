@@ -1397,11 +1397,13 @@ ChunkItemPtr ChunkItemPlacer::createUDOChunkItem(
 		
 	if (!pChunk)
 	{
+		INFO_MSG("新建对象返回空----1\n");
 		return NULL;
 	}
 
 	if (!EditorChunkCache::instance( *pChunk ).edIsWriteable())
 	{
+		INFO_MSG("新建对象返回空----2\n");
 		return NULL;
 	}
 	
@@ -1435,12 +1437,14 @@ ChunkItemPtr ChunkItemPlacer::createUDOChunkItem(
 	
 	if (!result)
 	{
+		INFO_MSG("新建对象返回空----3\n");
 		return NULL;
 	}
 
 	ChunkItemPtr pItem = result.item();
 	if (!pItem)
 	{
+		INFO_MSG("新建对象为空\n");
 		return NULL;
 	}
 

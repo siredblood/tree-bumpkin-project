@@ -3986,6 +3986,18 @@
 				</File>
 			</Filter>
 		</Filter>
+		<Filter
+			Name="navigationMap"
+			>
+			<File
+				RelativePath=".\navigationMap\NavigationMap.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\navigationMap\NavigationMap.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\stdafx.h"
 			>

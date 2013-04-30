@@ -605,7 +605,7 @@ BOOL MainFrame::CreateRibbonBar()
 	CXTPRibbonTab* pTabImportTool = pRibbonBar->AddTab( ID_TAB_IMPORTTOOL );
 
 	CXTPRibbonGroup* pGroupLabel= pTabImportTool->AddGroup( ID_GROUP_LABEL );			//标注
-	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELGET );							//加载标注
+	//pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELGET );							//加载标注
 	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELADD	);							//添加标注
 	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELHIDE );							//显示/隐藏标注
 	pGroupLabel->Add( xtpControlButton, ID_BUTTON_LABELSET );							//标注管理
@@ -770,6 +770,11 @@ void MainFrame::OnAddmark()
 */
 void MainFrame::OnShoworhidemark()
 {
+	static bool bLoad = false;
+	if ( !bLoad ){
+		bLoad = true;
+		CMarkManage::Instance().LoadMarks();
+	}
 	bool bShowMark = CMarkObject::Instance().IsShowMark();
 	CMarkObject::Instance().ShowMark(!bShowMark);
 }

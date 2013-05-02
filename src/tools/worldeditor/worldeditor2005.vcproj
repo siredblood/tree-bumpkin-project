@@ -3697,6 +3697,14 @@
 				RelativePath=".\Dialogs\BaseReportDlg.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Dialogs\PropertyItem.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Dialogs\PropertyItem.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="GeneralClass"
@@ -3995,6 +4003,50 @@
 			</File>
 			<File
 				RelativePath=".\navigationMap\NavigationMap.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="BuildingProperty"
+			>
+			<File
+				RelativePath=".\BuildingProperty\BuildingPropertyMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\BuildingPropertyMgr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\BuildingPropertyMsg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\BuildingPropertyMsg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DBBuildingProperty.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DBBuildingProperty.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DlgBuildingProperty.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DlgBuildingProperty.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DlgBuildingPropertyMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BuildingProperty\DlgBuildingPropertyMgr.h"
 				>
 			</File>
 		</Filter>

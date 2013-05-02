@@ -56,6 +56,10 @@
 //新路径浏览
 #include "worldeditor/UDOController/Dialog/DlgUDOManager.h"
 #include "worldeditor/UDOController/Fly.hpp"
+// 建筑属性
+#include "worldeditor/BuildingProperty/DlgBuildingProperty.h"
+#include "worldeditor/BuildingProperty/BuildingPropertyMsg.h"
+#include "worldeditor/BuildingProperty/DlgBuildingPropertyMgr.h"
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -89,13 +93,13 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_WM_GETMINMAXINFO()
 
 	ON_MESSAGE(UM_FULLSCREEN, &MainFrame::OnFullScreen)
-
+	// 标注
 	ON_COMMAND(ID_BUTTON_LABELADD, &MainFrame::OnAddmark)
 	ON_COMMAND(ID_BUTTON_LABELHIDE, &MainFrame::OnShoworhidemark)
 	ON_UPDATE_COMMAND_UI(ID_BUTTON_LABELHIDE, &MainFrame::OnUpdateShoworhidemark)
 	ON_COMMAND(ID_BUTTON_LABELSET, &MainFrame::OnMarkmanage)
 	ON_COMMAND(ID_BUTTON_LABELGET, &MainFrame::OnReloadmark)
-
+	// 户型图
 	ON_COMMAND(ID_BUTTON_DIAGRAMVIEW, &MainFrame::OnViewDiagram)
 	//方案替换
 	ON_COMMAND(ID_BUTTON_ADDBUILDINGSCHEME, &MainFrame::OnAddBuildingScheme)
@@ -108,7 +112,11 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_UPDATE_COMMAND_UI(ID_BUTTON_PAUSENAV, &MainFrame::OnUpdatePausedPathTravel)
 	ON_COMMAND(ID_BUTTON_STOP, &MainFrame::OnStopPathTravel)
 	ON_UPDATE_COMMAND_UI(ID_BUTTON_STOP, &MainFrame::OnUpdateStopPathTravel)
-
+	// 建筑属性
+	ON_COMMAND(ID_BUTTON_BUILDINGPROPERTY, &MainFrame::OnBuildingProperty)
+	ON_COMMAND(ID_BUTTON_BUILDINGPROPERTYMGR, &MainFrame::OnBuildingPropertyMgr)
+	ON_COMMAND(ID_BUTTON_BUILDINGPROPERTYSHOWHIDE, &MainFrame::OnBuildingPropertyShowHide)
+	ON_UPDATE_COMMAND_UI(ID_BUTTON_BUILDINGPROPERTYSHOWHIDE, &MainFrame::OnUpdateBuildingPropertyShowHide)
 	
 	END_MESSAGE_MAP()
 
@@ -631,6 +639,15 @@ BOOL MainFrame::CreateRibbonBar()
 	pGroupPathScan->Add( xtpControlButton, ID_BUTTON_PAUSENAV );						//浏览暂停或继续
 	pGroupPathScan->Add( xtpControlButton, ID_BUTTON_STOP );							//浏览停止
 	//////////////////////////////////////////////////////////////////////////
+
+	//////////////////////////////////////////////////////////////////////////
+	// 建筑属性
+	CXTPRibbonGroup* pGroupProperty = pTabImportTool->AddGroup( ID_GROUP_BUILDINGPROPERTY );	//建筑属性
+	pGroupProperty->SetControlsCentering();
+	pGroupProperty->Add( xtpControlButton, ID_BUTTON_BUILDINGPROPERTY );
+	pGroupProperty->Add( xtpControlButton, ID_BUTTON_BUILDINGPROPERTYSHOWHIDE );
+	pGroupProperty->Add( xtpControlButton, ID_BUTTON_BUILDINGPROPERTYMGR );
+
 	// 帮助
 	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
 
@@ -683,7 +700,9 @@ void MainFrame::LoadIcons()
 	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_STOP, uiGroupPathStop, 
 		_countof(uiGroupPathStop), CSize(32, 32) );
 
-
+	UINT uiGroupBuildingProperty[] = { ID_BUTTON_BUILDINGPROPERTY };
+	pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_BUILDINGPROPERTY, uiGroupBuildingProperty, 
+		_countof(uiGroupBuildingProperty), CSize(32, 32) );
 }
 
 BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs)
@@ -942,4 +961,56 @@ void MainFrame::OnUpdateStopPathTravel( CCmdUI *pCmdUI )
 {
 	bool bTraveling = Fly::instance().isFlying();
 	pCmdUI->Enable( bTraveling );
+}
+/**
+* 属性
+*/
+void MainFrame::OnBuildingProperty()
+{
+	std::vector<ChunkItemPtr> vItems = WorldManager::instance().selectedItems();
+	if(vItems.size()!=1){
+		AfxMessageBox("请选择一个对象");
+		return;
+	}
+	CDlgBuildingProperty::Instance().ShowWindow(SW_SHOW);
+}
+/**
+* 属性管理
+*/
+void MainFrame::OnBuildingPropertyMgr()
+{
+	CDlgBuildingPropertyMgr::Instance().ShowWindow(SW_SHOW);
+}
+/**
+* 隐藏显示属性
+*/
+void MainFrame::OnBuildingPropertyShowHide()
+{
+	bool bShow = CBuildingPropertyMsg::Instance().isDraw();
+	CBuildingPropertyMsg::Instance().setDraw(!bShow);
+}
+/**
+* 隐藏显示属性更新
+*/
+void MainFrame::OnUpdateBuildingPropertyShowHide(CCmdUI *pCmdUI)
+{
+	CXTPCommandBars* pCommandBars = GetCommandBars();
+	bool bShow = CBuildingPropertyMsg::Instance().isDraw();
+
+	if ( !bShow )
+	{
+		//设置按钮为显示标注
+		pCmdUI->SetText( "显示属性" );
+		//UINT uiGroupPauseNav[] = { ID_BUTTON_BUILDINGPROPERTYSHOW };
+		//pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELSHOW, uiGroupPauseNav,
+		//	_countof(uiGroupPauseNav), CSize(32, 32) );
+	}
+	else
+	{
+		//设置按钮为隐藏标注
+		pCmdUI->SetText( "隐藏属性" );
+		//UINT uiGroupPauseNav[] = { ID_BUTTON_BUILDINGPROPERTYHIDE };
+		//pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELHIDE, uiGroupPauseNav,
+		//	_countof(uiGroupPauseNav), CSize(32, 32) );
+	}
 }

@@ -157,6 +157,13 @@ public:
 	afx_msg void OnUpdateStopPathTravel(CCmdUI *pCmdUI);
 	//**************************路径浏览**************************//
 
+	//**************************建筑属性**************************//
+	afx_msg void OnBuildingProperty();
+	afx_msg void OnBuildingPropertyMgr();
+	afx_msg void OnBuildingPropertyShowHide();
+	afx_msg void OnUpdateBuildingPropertyShowHide(CCmdUI *pCmdUI);
+	//**************************建筑属性**************************//
+
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);
 

@@ -35,16 +35,20 @@ void CBuildingPropertyMsg::draw()
 	float fWinHeight = Moo::rc().screenHeight();
 	float fWinWidth = Moo::rc().screenWidth();
 	POINT pt = WorldManager::instance().currentCursorPosition();
-	Vector2 vBottom, vTop((float)pt.x, (float)pt.y);
-	if(vTop.y-BG_HEIGHT<0){
+	Vector2 vBottom, vTop((float)pt.x+16, (float)pt.y);
+
+	if(vTop.y-BG_HEIGHT/2<0){// ¶¥¶Ë³¬³ö
 		vTop.y = 0;
-		vTop.x += 16;
 		vBottom.y = vTop.y + BG_HEIGHT;
-	}else{
-		vBottom.y = vTop.y;
-		vTop.y -= BG_HEIGHT;
+	}else if(vTop.y+BG_HEIGHT/2>fWinHeight){// µ×¶Ë³¬³ö
+		vBottom.y = fWinHeight;
+		vTop.y = vBottom.y - BG_HEIGHT;
+	}else{// Õý³£·¶Î§
+		vTop.y -= BG_HEIGHT / 2;
+		vBottom.y = vTop.y + BG_HEIGHT;
 	}
 	if(vTop.x+BG_WITHD>fWinWidth){
+		vTop.x -= 16;
 		vBottom.x = vTop.x;
 		vTop.x -= BG_WITHD;
 	}else{

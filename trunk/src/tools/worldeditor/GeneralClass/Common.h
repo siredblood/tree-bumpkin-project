@@ -58,4 +58,7 @@ BOOL CheckFolder( CString strFolderPath );
 //把对象移动相应的位置
 void MoveItemToPos(ChunkItemPtr &item, Vector3 pos, Vector3 dir);
 
+//查找对象
+ChunkItemPtr findItem(CString strGuid);
+
 #endif

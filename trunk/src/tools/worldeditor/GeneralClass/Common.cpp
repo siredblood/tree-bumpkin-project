@@ -1,5 +1,6 @@
 #include "pch.hpp"
 #include "GeneralClass/CustomCollision.h"
+#include "world/editor_chunk.hpp"
 
 Moo::Colour ConverStrToColorRGB(char *szColor)
 {
@@ -328,4 +329,28 @@ void MoveItemToPos(ChunkItemPtr &item, Vector3 pos, Vector3 dir)
 	//newPosemt.invert();
 
 	item->edTransform(newPosemt,false);
+}
+
+ChunkItemPtr findItem( CString strGuid )
+{
+	ChunkItemPtr pResultItem=NULL;
+	std::vector<ChunkItemPtr> items;
+	for( std::set<Chunk*>::iterator iter = EditorChunkCache::chunks_.begin();
+		iter != EditorChunkCache::chunks_.end(); ++iter )
+	{
+
+		items = EditorChunkCache::instance( **iter ).staticItems();
+		for(std::vector<ChunkItemPtr>::iterator itrItems = items.begin(); itrItems != items.end(); ++itrItems)
+		{
+			std::string strTMP = (*itrItems)->edGUID();
+			if( !strTMP.compare( strGuid.GetBuffer() ) )
+			{
+				pResultItem = *itrItems;
+				break;
+			}
+		}
+		if(pResultItem!=NULL)
+			break;
+	}
+	return pResultItem;
 }

@@ -44,9 +44,11 @@ BOOL BuildingSchemeManagerDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 
 	m_wndReportCtrl.AddColumn(new CXTPReportColumn(0, _T("√"), 30, FALSE));
-	m_wndReportCtrl.AddColumn(new CXTPReportColumn(1, _T("方案"), 30, TRUE));
+	CXTPReportColumn *pColumn = m_wndReportCtrl.AddColumn(new CXTPReportColumn(1, _T("方案"), 30, TRUE));
 	m_wndReportCtrl.AddColumn(new CXTPReportColumn(2, _T("原模型"), 50, TRUE));
 	m_wndReportCtrl.AddColumn(new CXTPReportColumn(3, _T("替换模型"), 50, TRUE));
+
+	pColumn->SetVisible(FALSE);
 
 	m_wndReportCtrl.ShowGroupBy();
 	m_wndReportCtrl.GetColumns()->GetGroupsOrder()->Add(m_wndReportCtrl.GetColumns()->GetAt(1));
@@ -117,8 +119,12 @@ void BuildingSchemeManagerDlg::OnReportItemDBClick( NMHDR * pNotifyStruct, LRESU
 	if (pItemNotify->pRow)
 	{
 		int iSelRow = pItemNotify->pRow->GetIndex();
-		CString strModel = pItemNotify->pRow->GetRecord()->GetItem(2)->GetCaption(0);
-		
-		BuildingSchemeManager::getInstance()->locateToModel(strModel);
+		if(pItemNotify->pRow->GetRecord())
+		{
+			CString strModel = pItemNotify->pRow->GetRecord()->GetItem(2)->GetCaption(0);
+
+			BuildingSchemeManager::getInstance()->locateToModel(strModel);
+		}
+
 	}
 }

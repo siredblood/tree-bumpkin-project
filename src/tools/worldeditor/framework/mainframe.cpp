@@ -60,6 +60,10 @@
 #include "worldeditor/BuildingProperty/DlgBuildingProperty.h"
 #include "worldeditor/BuildingProperty/BuildingPropertyMsg.h"
 #include "worldeditor/BuildingProperty/DlgBuildingPropertyMgr.h"
+//功能分区
+#include "sectorization/SectorizationManagerDlg.h"
+#include "sectorization/AddSectorizationObjectDlg.h"
+#include "sectorization/SectorizationObjManagerDlg.h"
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -117,7 +121,11 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_COMMAND(ID_BUTTON_BUILDINGPROPERTYMGR, &MainFrame::OnBuildingPropertyMgr)
 	ON_COMMAND(ID_BUTTON_BUILDINGPROPERTYSHOWHIDE, &MainFrame::OnBuildingPropertyShowHide)
 	ON_UPDATE_COMMAND_UI(ID_BUTTON_BUILDINGPROPERTYSHOWHIDE, &MainFrame::OnUpdateBuildingPropertyShowHide)
-	
+	//功能分区
+	ON_COMMAND(ID_BUTTON_ADDSECTORIZATION, &MainFrame::OnSectorizationManager)
+	ON_COMMAND(ID_BUTTON_ADDSECTORIZATIONOBJECT, &MainFrame::OnAddSectorizationObject)
+	ON_COMMAND(ID_BUTTON_SECTORIZATIONOBJECTMANAGER, &MainFrame::OnSectorizationObjectManager)
+
 	END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -648,6 +656,14 @@ BOOL MainFrame::CreateRibbonBar()
 	pGroupProperty->Add( xtpControlButton, ID_BUTTON_BUILDINGPROPERTYSHOWHIDE );
 	pGroupProperty->Add( xtpControlButton, ID_BUTTON_BUILDINGPROPERTYMGR );
 
+	//////////////////////////////////////////////////////////////////////////
+	//功能分区
+	CXTPRibbonGroup* pGroupSectorization = pTabImportTool->AddGroup( ID_GROUP_SECTORIZATION );
+	pGroupSectorization->SetControlsCentering();
+	pGroupSectorization->Add( xtpControlButton, ID_BUTTON_ADDSECTORIZATION );
+	pGroupSectorization->Add( xtpControlButton, ID_BUTTON_ADDSECTORIZATIONOBJECT );
+	pGroupSectorization->Add( xtpControlButton, ID_BUTTON_SECTORIZATIONOBJECTMANAGER );
+	//////////////////////////////////////////////////////////////////////////
 	// 帮助
 	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
 
@@ -1013,4 +1029,37 @@ void MainFrame::OnUpdateBuildingPropertyShowHide(CCmdUI *pCmdUI)
 		//pCommandBars->GetImageManager()->SetIcons( IDR_BUTTON_LABELHIDE, uiGroupPauseNav,
 		//	_countof(uiGroupPauseNav), CSize(32, 32) );
 	}
+}
+
+void MainFrame::OnSectorizationManager()
+{
+	SectorizationManagerDlg::getInstance()->ShowWindow( SW_SHOW );
+	SectorizationManagerDlg::getInstance()->showResult();
+}
+
+void MainFrame::OnAddSectorizationObject()
+{
+	std::vector<ChunkItemPtr> vSelItems = WorldManager::instance().selectedItems();
+	int isize = vSelItems.size();
+	if(isize==0)
+		return;
+	std::vector<CString> vGuids;
+	for(int i=0; i<isize; i++)
+	{
+		std::string strGuid = vSelItems[i]->edGUID();
+		vGuids.push_back(strGuid.c_str());
+	}
+	//AddSectorizationObjectDlg::getInstance()->setSelectGuids(vGuids);
+	//AddSectorizationObjectDlg::getInstance()->ShowWindow(SW_SHOW);
+	AddSectorizationObjectDlg* dlg = new AddSectorizationObjectDlg;
+	dlg->Create(IDD_ADDSECTORIZATIONOBJECT_DLG);
+	dlg->ShowWindow(SW_SHOW);
+	dlg->setSelectGuids(vGuids);
+}
+
+void MainFrame::OnSectorizationObjectManager()
+{
+	SectorizationObjManagerDlg* dlg = new SectorizationObjManagerDlg;
+	dlg->Create(IDD_SECTORIZATIONOBJECTMANAGER_DLG);
+	dlg->ShowWindow(SW_SHOW);
 }

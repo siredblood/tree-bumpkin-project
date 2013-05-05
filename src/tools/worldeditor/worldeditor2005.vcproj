@@ -4007,6 +4007,50 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="sectorization"
+			>
+			<File
+				RelativePath=".\sectorization\AddSectorizationObjectDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\AddSectorizationObjectDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationDatabase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationManagerDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationManagerDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationObjManagerDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sectorization\SectorizationObjManagerDlg.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="BuildingProperty"
 			>
 			<File

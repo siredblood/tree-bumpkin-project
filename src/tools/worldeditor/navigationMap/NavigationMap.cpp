@@ -11,7 +11,7 @@ CNavigationMap::CNavigationMap(void)
 	TaskManager::instance().add( this, "CNavigationMap", NULL );
 	
 	m_bDrawDir = true;
-	m_ChineseFont.InitFont(20, 30, "¡• È");
+	m_ChineseFont.InitFont(20, 20, "¡• È");
 	
 	m_Position = eRightTop;
 

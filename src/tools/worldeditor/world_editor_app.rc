@@ -265,6 +265,37 @@ BEGIN
     LTEXT           "快速刷选：",IDC_STI_LIANGTYPE3,58,222,41,8
 END
 
+IDD_SECTORIZATIONMANAGER_DLG DIALOGEX 0, 0, 389, 191
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "功能分区管理"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "自定义1",IDC_REPORTCTRL,"XTPReport",WS_TABSTOP,7,7,375,156
+    PUSHBUTTON      "新建",IDC_BUTTON_ADD,219,170,50,14
+    PUSHBUTTON      "删除",IDC_BUTTON_DEL,276,170,50,14
+    PUSHBUTTON      "当前视角",IDC_BUTTON3,332,170,50,14
+END
+
+IDD_ADDSECTORIZATIONOBJECT_DLG DIALOGEX 0, 0, 277, 49
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加对象到分区"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,220,18,50,14
+    LTEXT           "选择分区：",IDC_STATIC,7,20,41,8
+    COMBOBOX        IDC_COMBO1,61,18,137,58,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_SECTORIZATIONOBJECTMANAGER_DLG DIALOGEX 0, 0, 346, 205
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "分区对象管理"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "自定义1",IDC_REPORTCTRL,"XTPReport",WS_TABSTOP,7,7,332,170
+    PUSHBUTTON      "删除",IDC_BUTTON1,289,184,50,14
+END
+
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
@@ -291,7 +322,8 @@ IDR_BUTTON_DIAGRAMVIEW  PNG                     "res\\查看户型图.png"
 IDR_BUTTON_CONTINUE     PNG                     "res\\继续浏览.png"
 IDR_BUTTON_STOP         PNG                     "res\\停止浏览.png"
 IDR_BUTTON_PATH         PNG                     "res\\路径管理.png"
-IDR_BUTTON_PAUSE		PNG                     "res\\继续暂停.png"
+IDR_BUTTON_PAUSE        PNG                     "res\\继续暂停.png"
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
@@ -346,6 +378,30 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 185
     END
+
+    IDD_SECTORIZATIONMANAGER_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 382
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_ADDSECTORIZATIONOBJECT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 270
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_SECTORIZATIONOBJECTMANAGER_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 339
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 198
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -371,11 +427,18 @@ BEGIN
     ID_GROUP_LABEL          "标注"
     ID_GROUP_DIAGRAM        "户型图"
     ID_BUTTON_DIAGRAMVIEW   "查看户型图\n查看户型图"
-	ID_BUTTON_BUILDINGPROPERTY "建筑属性\n建筑属性"
-	ID_BUTTON_BUILDINGPROPERTYMGR "属性管理\n属性管理"
-	ID_BUTTON_BUILDINGPROPERTYSHOW "属性显示\n属性显示"
-	ID_BUTTON_BUILDINGPROPERTYHIDE "属性隐藏\n属性隐藏"
-	ID_GROUP_BUILDINGPROPERTY	"属性\n属性"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BUTTON_BUILDINGPROPERTY "建筑属性\n建筑属性"
+    ID_GROUP_BUILDINGPROPERTY "属性\n属性"
+    ID_BUTTON_BUILDINGPROPERTYMGR "属性管理\n属性管理"
+    ID_BUTTON_BUILDINGPROPERTYSHOW "属性显示\n属性显示"
+    ID_BUTTON_BUILDINGPROPERTYHIDE "属性隐藏\n属性隐藏"
+    ID_BUTTON_ADDSECTORIZATION "功能分区管理\n功能分区管理"
+    ID_BUTTON_ADDSECTORIZATIONOBJECT "添加对象到分区\n添加对象到分区"
+    ID_BUTTON_SECTORIZATIONOBJECTMANAGER "分区对象管理\n分区对象管理"
 END
 
 STRINGTABLE 
@@ -412,6 +475,11 @@ BEGIN
     ID_BUTTON_PAUSENAV      "暂停(继续)浏览\n暂停(继续)浏览"
     ID_BUTTON_STOP          "停止浏览\n停止浏览"
     ID_GROUP_PATHSCAN       "路径浏览"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_GROUP_SECTORIZATION  " 功能分区"
 END
 
 #endif    // 中文(中华人民共和国) resources

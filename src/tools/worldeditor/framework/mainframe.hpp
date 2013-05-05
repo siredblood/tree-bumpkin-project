@@ -164,6 +164,12 @@ public:
 	afx_msg void OnUpdateBuildingPropertyShowHide(CCmdUI *pCmdUI);
 	//**************************建筑属性**************************//
 
+	//////////////////////////////////////////////////////////////////////////
+	//功能分区
+	afx_msg void OnSectorizationManager();
+	afx_msg void OnAddSectorizationObject();
+	afx_msg void OnSectorizationObjectManager();
+	//////////////////////////////////////////////////////////////////////////
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);
 

@@ -145,12 +145,14 @@ BOOL UDOController::saveToDB( int pid, const std::vector< UDOCameraNode >& nodes
 		std::string strTransform = StringUtils::matrixToString( (*cItr).transform );
 		fSpeed = (*cItr).speed > MIN_SPEED ? (*cItr).speed : MIN_SPEED;
 		
-		strSql.Format( "INSERT INTO FlyThrough_Nodes (pid, transform, guid, chunkID, nextGUID, \
-					   nextChunkID, backGUID, backChunkID, speed, description) Values (%d,'%s','%s','%s','%s',\
-					   '%s','%s','%s',%.2f,'%s')", pid, strTransform.c_str(), (*cItr).guid.c_str(), (*cItr).chunkID.c_str(), 
-					   (*cItr).nextGUID.c_str(), (*cItr).nextChunkID.c_str(), (*cItr).backGUID.c_str(), 
-					   (*cItr).backChunkID.c_str(), fSpeed, (*cItr).description.c_str() );
+		strSql.Format( "INSERT INTO FlyThrough_Nodes ([pid], [transform], [guid], [chunkID], [nextGUID], [nextChunkID], [backGUID], [backChunkID], [speed], [description]) Values (%d,'%s','%s','%s','%s','%s','%s','%s',%.2f,'%s')",
+			pid, strTransform.c_str(), (*cItr).guid.c_str(), (*cItr).chunkID.c_str(), 
+			(*cItr).nextGUID.c_str(), (*cItr).nextChunkID.c_str(), (*cItr).backGUID.c_str(), 
+			(*cItr).backChunkID.c_str(), fSpeed, (*cItr).description.c_str() );
 					   
+		//INFO_MSG("%s\n", strSql.GetBuffer(0));
+
+		//theBllApp.m_pDB->ExcuteSql(strSql.GetBuffer(0), adCmdText);
 		//if( (*cItr).id < 0 )
 		//{
 		//	strSql.Format( "INSERT INTO FlyThrough_Nodes (pid, transform, guid, chunkID, nextGUID, \
@@ -379,7 +381,7 @@ void UDOController::handleMouseEvent( const MouseEvent & event )
 
 	Vector3 vMousePt = start + worldRay * sc.getCollideDist() ;
 
-	INFO_MSG("%f,%f,%f\n", vMousePt.x, vMousePt.y, vMousePt.z);
+	//INFO_MSG("%f,%f,%f\n", vMousePt.x, vMousePt.y, vMousePt.z);
 
 	Matrix transform;
 	transform.setIdentity();

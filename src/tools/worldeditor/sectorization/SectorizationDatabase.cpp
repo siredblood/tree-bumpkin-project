@@ -87,7 +87,7 @@ BOOL SectorizationDatabase::addSectorization( CString strName, Vector3 viewpos, 
 	strSQL = "INSERT INTO 功能分区(名称,视角位置,视角方向) values('" + strName +"','" + strpos
 		+"','" + strdir + "')";
 
-	INFO_MSG(strSQL);
+	//INFO_MSG(strSQL);
 	return theBllApp.m_pDB->ExcuteSql(strSQL,adCmdText);
 }
 
@@ -108,7 +108,7 @@ BOOL SectorizationDatabase::editSectorization( CString strName, Vector3 viewpos,
 	
 	_bstr_t strSQL;
 	strSQL = "UPDATE 功能分区 SET 视角位置 ='" + strpos + "', 视角方向='" + strdir + "' WHERE 名称='" + strName + "'";
-	INFO_MSG(strSQL);
+	//INFO_MSG(strSQL);
 
 	return theBllApp.m_pDB->ExcuteSql(strSQL,adCmdText);
 }
@@ -128,7 +128,7 @@ BOOL SectorizationDatabase::addSectorizationObject( CString strName, CString str
 	_bstr_t strSQL;
 	strSQL = "INSERT INTO 功能分区对象(所属分区,对象) values('" + strName +"','" + strGuid + "')";
 
-	INFO_MSG(strSQL);
+	//INFO_MSG(strSQL);
 	return theBllApp.m_pDB->ExcuteSql(strSQL,adCmdText);
 }
 

@@ -149,7 +149,8 @@ void BasePropertiesHelper::resetSelUpdate( bool keepSelection /*= false*/ )
 	int curSel;
 	if ( keepSelection )
 	{
-		curSel = PropTable::table()->propertyList()->GetCurSel();
+		if(PropTable::table()->propertyList())//bobo edit
+			curSel = PropTable::table()->propertyList()->GetCurSel();
 	}
 
 	pItem_->edMainThreadLoad();
@@ -171,7 +172,8 @@ void BasePropertiesHelper::resetSelUpdate( bool keepSelection /*= false*/ )
 
 	if ( keepSelection )
 	{
-		PropTable::table()->propertyList()->selectItem( curSel );
+		if(PropTable::table()->propertyList())	//bobo edit
+			PropTable::table()->propertyList()->selectItem( curSel );
 	}
 }
 

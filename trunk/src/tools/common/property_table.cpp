@@ -26,13 +26,14 @@ void PropertyTable::update()
 	
 void PropertyTable::clear()
 {
-	pImpl_->propertyList.clear();
-	pImpl_->viewList.clear();
+	//bobo修改
+	//pImpl_->propertyList.clear();
+	//pImpl_->viewList.clear();
 }
 
 PropertyList* PropertyTable::propertyList()
 {
-	return &(pImpl_->propertyList);
+	return NULL;	//&(pImpl_->propertyList); bobo修改
 }
 
 void PropertyTable::DoDataExchange(CDataExchange* pDX)
@@ -90,7 +91,8 @@ void PropertyTable::OnSize( UINT nType, int cx, int cy )
 
 int PropertyTable::addView( BaseView* view )
 {
-	pImpl_->viewList.push_back( view );
+	//bobo修改
+	//pImpl_->viewList.push_back( view );
 
 	return addItemsForView( view );
 }
@@ -102,7 +104,7 @@ int PropertyTable::addItemsForView( BaseView* view )
 		it != view->propertyItems().end();
 		it++)
 	{
-		int newIndex = pImpl_->propertyList.AddPropItem(&*(*it));
+		int newIndex = -1;//pImpl_->propertyList.AddPropItem(&*(*it));//bobo修改
 		if (firstIndex == -1)
 			firstIndex = newIndex;
 	}

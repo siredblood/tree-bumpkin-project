@@ -112,11 +112,16 @@
 	linkValue_ = UserDataObjectLinkDataType::asString( ob.getObject() );
 
     // Set the new node as the selection:
-	int curSel = PropTable::table()->propertyList()->GetCurSel();
+	
     std::vector<ChunkItemPtr> items;
     items.push_back( newNode );
     WorldManager::instance().setSelection( items );
-	PropTable::table()->propertyList()->selectItem( curSel );
+	if(PropTable::table()->propertyList())//bobo edit
+	{
+		int curSel = PropTable::table()->propertyList()->GetCurSel();
+		PropTable::table()->propertyList()->selectItem( curSel );
+	}
+	
 
 	newNode->propHelper()->resetSelUpdate( true );
 

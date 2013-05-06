@@ -64,6 +64,9 @@
 #include "sectorization/SectorizationManagerDlg.h"
 #include "sectorization/AddSectorizationObjectDlg.h"
 #include "sectorization/SectorizationObjManagerDlg.h"
+//ÒôÆµÊÓÆµ
+#include "worldeditor/MCIPlayer/DlgMusicMgr.h"
+#include "worldeditor/MCIPlayer/MCIPlayerMgr.h"
 
 DECLARE_DEBUG_COMPONENT2( "WorldEditor2", 0 )
 
@@ -125,6 +128,9 @@ BEGIN_MESSAGE_MAP(MainFrame, /*CFrameWnd*/CXTPFrameWnd)
 	ON_COMMAND(ID_BUTTON_ADDSECTORIZATION, &MainFrame::OnSectorizationManager)
 	ON_COMMAND(ID_BUTTON_ADDSECTORIZATIONOBJECT, &MainFrame::OnAddSectorizationObject)
 	ON_COMMAND(ID_BUTTON_SECTORIZATIONOBJECTMANAGER, &MainFrame::OnSectorizationObjectManager)
+	// ÒôÆµÊÓÆµ
+	ON_COMMAND(ID_BUTTON_MUSICMANAGRER, &MainFrame::OnMusicManager)
+	ON_MESSAGE( MM_MCINOTIFY, &MainFrame::OnMciNotify)
 
 	END_MESSAGE_MAP()
 
@@ -241,6 +247,10 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	SetWindowText("3D-WorldViewer");
 
 	//PostMessage(UM_FULLSCREEN);
+
+	// ³õÊ¼»¯ÒôÆµ
+	CMCIPlayerMgr::Instance().init(m_hWnd);
+	CMCIPlayerMgr::Instance().playDefault();
 
 	return 0;
 }
@@ -664,6 +674,13 @@ BOOL MainFrame::CreateRibbonBar()
 	pGroupSectorization->Add( xtpControlButton, ID_BUTTON_ADDSECTORIZATIONOBJECT );
 	pGroupSectorization->Add( xtpControlButton, ID_BUTTON_SECTORIZATIONOBJECTMANAGER );
 	//////////////////////////////////////////////////////////////////////////
+
+	//////////////////////////////////////////////////////////////////////////
+	// ÒôÆµÊÓÆµ
+	CXTPRibbonGroup* pGroupMusicVideo = pTabImportTool->AddGroup( ID_GROUP_MUSICVEDIO );
+	pGroupMusicVideo->SetControlsCentering();
+	pGroupMusicVideo->Add( xtpControlButton, ID_BUTTON_MUSICMANAGRER );
+
 	// °ïÖú
 	CXTPRibbonTab* pTabHelpTool = pRibbonBar->AddTab( ID_TAB_HELPTOOL );
 
@@ -1062,4 +1079,19 @@ void MainFrame::OnSectorizationObjectManager()
 	SectorizationObjManagerDlg* dlg = new SectorizationObjManagerDlg;
 	dlg->Create(IDD_SECTORIZATIONOBJECTMANAGER_DLG);
 	dlg->ShowWindow(SW_SHOW);
+}
+
+void MainFrame::OnMusicManager()
+{
+	CDlgMusicMgr::Instance().ShowWindow(SW_SHOW);
+	CDlgMusicMgr::Instance().updateState();
+}
+
+LRESULT MainFrame::OnMciNotify(WPARAM wParam, LPARAM lParam)
+{
+	if(wParam == MCI_NOTIFY_SUCCESSFUL ){
+		CMCIPlayerMgr::Instance().next();
+		CDlgMusicMgr::Instance().updateState();
+	}
+	return 0L;
 }

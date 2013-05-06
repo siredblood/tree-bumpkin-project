@@ -170,6 +170,11 @@ public:
 	afx_msg void OnAddSectorizationObject();
 	afx_msg void OnSectorizationObjectManager();
 	//////////////////////////////////////////////////////////////////////////
+
+	//**************************音频管理**************************//
+	afx_msg void OnMusicManager();
+	LRESULT OnMciNotify(WPARAM wParam, LPARAM lParam);
+	//**************************建筑属性**************************//
 	//弹出窗体里的控件相应事件
 	//afx_msg LRESULT OnPopupNotify(WPARAM wParam, LPARAM lParam);
 

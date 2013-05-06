@@ -4094,6 +4094,34 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="MCIPlayer"
+			>
+			<File
+				RelativePath=".\MCIPlayer\DlgMusicMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MCIPlayer\DlgMusicMgr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MCIPlayer\MCIPlayer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MCIPlayer\MCIPlayer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MCIPlayer\MCIPlayerMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MCIPlayer\MCIPlayerMgr.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\stdafx.h"
 			>
